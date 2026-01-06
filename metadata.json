@@ -1,0 +1,7 @@
+{
+  "name": "Alfredo Mendoza - Arquitecto Digital",
+  "description": "Un portafolio hiper-personalizado, sarcástico y fluido para un creador de experiencias web de alta gama.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
