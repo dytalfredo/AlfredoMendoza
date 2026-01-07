@@ -7,6 +7,8 @@ import { ShoppingBag, MessageSquare, Ticket, ArrowUpRight, Database, Smartphone,
 import Navigation from './components/Navigation';
 import Chatbot from './components/Chatbot';
 import AdminPanel from './components/AdminPanel';
+import LoadingScreen from './components/LoadingScreen';
+
 
 // Import Data
 import contentData from './data/content.json';
@@ -914,10 +916,15 @@ const Home = () => {
 };
 
 const App: React.FC = () => {
+    const [hasEntered, setHasEntered] = useState(false);
+
     return (
         <HashRouter>
+            <AnimatePresence mode="wait">
+                {!hasEntered && <LoadingScreen onComplete={() => setHasEntered(true)} />}
+            </AnimatePresence>
             <ScrollToTop />
-            <div className="antialiased selection:bg-terracotta selection:text-white">
+            <div className={`antialiased selection:bg-terracotta selection:text-white ${!hasEntered ? 'h-screen overflow-hidden' : ''}`}>
                 <Navigation />
                 <Chatbot />
                 <Routes>
