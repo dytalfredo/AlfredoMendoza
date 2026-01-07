@@ -1,0 +1,271 @@
+{
+    "hero": {
+        "bgNames": [
+            "ALFREDO",
+            "DESARROLLADOR",
+            "SOLUCIONADOR"
+        ],
+        "bgRoles": [
+            "MENDOZA",
+            "VISIONARIO",
+            "VELOCISTA"
+        ],
+        "fgLine1": "Full Stack",
+        "fgLine2": "Visionary.",
+        "fgLine1Alt": "Alfredo",
+        "fgLine2Alt": "Mendoza.",
+        "description": "No solo hago minimalismo. Soy Full Stack.\nDescubro tu esencia y la traduzco en cualquier lenguaje visual necesario."
+    },
+    "philosophy": {
+        "sectionId": "philosophy",
+        "principles": [
+            {
+                "title": "Hiper Personalización",
+                "subtitle": "La Muerte de la Plantilla",
+                "desc": "Tu marca no es un template de $50. Usando IA y datos, creo experiencias que mutan según quien las mira.",
+                "img": "/images/solucion_personalizada.png"
+            },
+            {
+                "title": "Esencia Adaptativa",
+                "subtitle": "Forma sigue a Función",
+                "desc": "No impongo estilos. Descubro la verdad de tu negocio y la codifico. Brutalismo, Minimalismo o Caos Controlado.",
+                "img": "/images/diseño_alma.png"
+            },
+            {
+                "title": "UX Aplicativo",
+                "subtitle": "Herramientas, No Adornos",
+                "desc": "Si es bonito pero no vende, es arte. Yo hago negocios. Interfaces que convierten dudas en depósitos.",
+                "img": "/images/herramientas.png"
+            }
+        ]
+    },
+    "industries": {
+        "title": "Transformo Industrias",
+        "items": [
+            {
+                "label": "Estudios Tatuajes",
+                "desc": "Sistemas de citas automatizados, cobro de depósitos y galerías que venden."
+            },
+            {
+                "label": "Estudios Foto",
+                "desc": "Selección de pruebas en la nube y entrega digital instantánea."
+            },
+            {
+                "label": "Restaurantes",
+                "desc": "Menús QR interactivos que cuentan historias, no PDFs aburridos."
+            },
+            {
+                "label": "Tiendas Concepto",
+                "desc": "E-commerce inmersivo con sincronización de inventario real."
+            },
+            {
+                "label": "Consultorías",
+                "desc": "Embudos de conversión que filtran curiosos y agendan clientes."
+            },
+            {
+                "label": "Manufactura",
+                "desc": "Catálogos B2B dinámicos y cotizadores en tiempo real."
+            },
+            {
+                "label": "Servicios",
+                "desc": "Autoridad digital instantánea. Convierte la duda en venta."
+            }
+        ]
+    },
+    "testimonials": {
+        "bgText": "VALIDACIÓN EGO VERDAD",
+        "title": "No confíes \n en mi palabra.",
+        "italicWord": "palabra",
+        "subtitle": "Desliza para ver el daño →",
+        "reviews": [
+            {
+                "id": 1,
+                "quote": "Odiaba su actitud hasta que vi las tasas de conversión. Es arrogante porque tiene razón.",
+                "author": "Sarah J.",
+                "role": "CEO, TechFlow",
+                "tag": "VERIFIED HATER"
+            },
+            {
+                "id": 2,
+                "quote": "Alfredo no construyó lo que quería. Construyó lo que necesitaba. Salvó mi compañía.",
+                "author": "Mark D.",
+                "role": "Fundador, Apex",
+                "tag": "VERIFIED HATER"
+            },
+            {
+                "id": 3,
+                "quote": "Finalmente, un desarrollador que entiende que los píxeles importan.",
+                "author": "Elena R.",
+                "role": "Directora de Arte",
+                "tag": "VERIFIED HATER"
+            },
+            {
+                "id": 4,
+                "quote": "Desearía que dejara de trabajar para que yo pudiera conseguir clientes.",
+                "author": "Anónimo",
+                "role": "Competidor",
+                "tag": "VERIFIED HATER"
+            }
+        ]
+    },
+    "products": {
+        "eyebrow": "SaaS Ecosystem",
+        "title": "Productos",
+        "italicTitle": "Listos.",
+        "description": "Implementación inmediata. Sin tiempos muertos.",
+        "subDescription": "Olvida los ciclos de desarrollo de 6 meses. Despliega infraestructura empresarial validada.",
+        "ctaLabel": "Ver Demo Live",
+        "items": [
+            {
+                "id": "erp",
+                "title": "Control Total",
+                "subtitle": "ERP / E-COMMERCE",
+                "desc": "Inventario, facturación y tienda online en un solo cerebro digital.",
+                "icon": "Database",
+                "colorClass": "bg-stone-800",
+                "textColor": "text-stone-300",
+                "features": [
+                    "Sincronización en tiempo real",
+                    "Facturación Electrónica",
+                    "Panel Administrativo"
+                ]
+            },
+            {
+                "id": "bot",
+                "title": "SensyBot",
+                "subtitle": "IA WHATSAPP",
+                "desc": "Atención 24/7 que aprende de tus clientes y vende por ti.",
+                "icon": "Smartphone",
+                "colorClass": "bg-stone-900",
+                "textColor": "text-stone-200",
+                "features": [
+                    "Respuestas Humanizadas",
+                    "Agenda de Citas",
+                    "Seguimiento de Leads"
+                ]
+            },
+            {
+                "id": "game",
+                "title": "GameFed",
+                "subtitle": "FIDELIZACIÓN",
+                "desc": "Convierte compras en juegos adictivos. Ruletas, puntos y premios.",
+                "icon": "Layers",
+                "colorClass": "bg-terracotta",
+                "textColor": "text-stone-100",
+                "features": [
+                    "Gamificación",
+                    "Sistema de Puntos",
+                    "Sorteos Automáticos"
+                ]
+            }
+        ]
+    },
+    "projects": [
+        {
+            "id": "lumina",
+            "title": "Lumina",
+            "category": "Comercio Electrónico",
+            "year": "2023",
+            "img": "https://picsum.photos/seed/lumina/1920/1080",
+            "shortDesc": "Una solución a medida que resuelve problemas de retención de clientes a través de micro-interacciones intuitivas.",
+            "story": {
+                "conflict": "Lumina tenía un problema de identidad. Vendían lámparas de $500 en una web que parecía un almacén de $5. La tasa de rebote era del 70%. La gente no confiaba en la calidad porque la experiencia digital era barata.",
+                "strategy": "Destruimos el catálogo tradicional. Creamos una experiencia inmersiva donde el producto es el protagonista absoluto. Implementamos modelado 3D interactivo en React Three Fiber y una arquitectura Headless con Shopify para una velocidad brutal.",
+                "result": "La tasa de conversión se triplicó en 3 meses. El ticket promedio subió un 40%. No solo vendimos lámparas, vendimos estatus.",
+                "tech": [
+                    "React",
+                    "Shopify Hydrogen",
+                    "WebGL",
+                    "Tailwind"
+                ]
+            },
+            "gallery": [
+                "https://picsum.photos/seed/lumina1/800/600",
+                "https://picsum.photos/seed/lumina2/800/600",
+                "https://picsum.photos/seed/lumina3/800/600"
+            ]
+        },
+        {
+            "id": "apex-logic",
+            "title": "Apex Logic",
+            "category": "Panel SaaS",
+            "year": "2024",
+            "img": "https://picsum.photos/seed/apex/1920/1080",
+            "shortDesc": "Dashboard analítico para traders de alta frecuencia. Datos en tiempo real sin latencia visual.",
+            "story": {
+                "conflict": "Los traders odian esperar. La plataforma anterior tenía un retraso de 2 segundos en la carga de datos. En trading, 2 segundos es una eternidad. Apex estaba perdiendo usuarios frente a competidores más rápidos.",
+                "strategy": "Reescribimos el frontend usando WebSockets directos y optimización agresiva de renderizado. Diseñamos una interfaz oscura de alto contraste para reducir la fatiga visual en sesiones largas.",
+                "result": "Latencia visual reducida a <50ms. La retención de usuarios activos diarios aumentó un 85%.",
+                "tech": [
+                    "Next.js",
+                    "WebSockets",
+                    "D3.js",
+                    "Firebase"
+                ]
+            },
+            "gallery": [
+                "https://picsum.photos/seed/apex1/800/600",
+                "https://picsum.photos/seed/apex2/800/600"
+            ]
+        },
+        {
+            "id": "velvet",
+            "title": "Velvet",
+            "category": "Portafolio de Moda",
+            "year": "2022",
+            "img": "https://picsum.photos/seed/velvet/1920/1080",
+            "shortDesc": "Editorial digital para una marca de ropa emergente. Minimalismo brutalista.",
+            "story": {
+                "conflict": "El mercado de la moda está saturado de 'estética segura'. Velvet quería gritar, no susurrar. Necesitaban una web que fuera tan audaz como su ropa, pero funcional para el e-commerce.",
+                "strategy": "Utilizamos una estética brutalista con tipografía gigante y grid asimétrico. La navegación es una exploración, no un mapa. Cada scroll es una sorpresa visual controlada.",
+                "result": "Mención honorífica en Awwwards. Sold-out de la colección de lanzamiento en 48 horas.",
+                "tech": [
+                    "Astro",
+                    "GSAP",
+                    "Sanity CMS"
+                ]
+            },
+            "gallery": [
+                "https://picsum.photos/seed/velvet1/800/600",
+                "https://picsum.photos/seed/velvet2/800/600",
+                "https://picsum.photos/seed/velvet3/800/600"
+            ]
+        }
+    ],
+    "contact": {
+        "eyebrow": "Suficiente Navegación",
+        "title": "¿Listo para dejar de",
+        "italicTitle": "ser aburrido?",
+        "email": "hello@alfredomendoza.com",
+        "copyright": "Alfredo Mendoza. Todos los derechos reservados."
+    },
+    "navigation": {
+        "links": [
+            {
+                "name": "Inicio",
+                "id": "home"
+            },
+            {
+                "name": "Filosofía",
+                "id": "philosophy"
+            },
+            {
+                "name": "Productos",
+                "id": "products"
+            },
+            {
+                "name": "Trabajo",
+                "id": "work"
+            },
+            {
+                "name": "Contacto",
+                "id": "contact"
+            }
+        ]
+    },
+    "chatbot": {
+        "initialMessage": "Soy el gemelo digital de Alfredo. Soy más inteligente, más rápido y un poco menos humilde. Pregúntame por qué nos necesitas.",
+        "botName": "I.A. Alfredo",
+        "placeholder": "Pregúntame algo estúpido..."
+    }
+}
