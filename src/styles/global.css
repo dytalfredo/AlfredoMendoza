@@ -12,7 +12,19 @@
 }
 
 @layer base {
+    html {
+        scroll-behavior: smooth !important;
+        scroll-padding-top: 80px;
+        /* Offset for internal anchors */
+    }
+
     body {
-        @apply bg-stone-50 text-stone-900;
+        @apply bg-stone-50 text-stone-900 overflow-x-hidden;
+        font-family: var(--font-sans);
+        margin: 0;
+    }
+
+    section {
+        position: relative;
     }
 }

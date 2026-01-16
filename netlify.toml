@@ -1,0 +1,9 @@
+[dev]
+  # Cambia este número al puerto que prefieras
+  port = 3000
+
+  # Opcional: Si quieres que abra el navegador automáticamente
+  # autoLaunch = true
+
+  # Opcional: Si quieres forzar un comando de build específico para dev
+  # command = "npm run dev"

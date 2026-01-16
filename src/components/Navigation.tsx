@@ -2,7 +2,11 @@ import React from 'react';
 import { Menu, X, Lock } from 'lucide-react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { gsap } from 'gsap';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import contentData from '../data/content.json';
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Navigation = () => {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -30,25 +34,57 @@ const Navigation = () => {
     }, []);
 
     const handleScroll = (id: string) => {
+        console.log('--- handleScroll triggered ---', { id, currentPath: location.pathname });
         setIsOpen(false);
 
-        // Helper to perform the scroll
         const scrollToElement = () => {
+            console.log('Attempting to scroll to:', id);
             if (id === 'home') {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                gsap.to(window, { duration: 1, scrollTo: { y: 0 }, ease: "power2.out" });
             } else {
-                const element = document.getElementById(id);
-                if (element) {
-                    element.scrollIntoView({ behavior: 'smooth' });
+                // Determine offset based on section and direction
+                // Get approximate target position to determine direction
+                const targetElem = document.getElementById(id);
+                const currentScroll = window.scrollY;
+                let targetY = currentScroll; // Default fallback
+
+                if (targetElem) {
+                    const rect = targetElem.getBoundingClientRect();
+                    targetY = rect.top + currentScroll;
                 }
+
+                // Default offset logic
+                let offset = 80;
+
+                if (id === 'philosophy') {
+                    // Philosophy Special Logic:
+                    // Down: Scroll deeper (-400) to show first item immediately.
+                    // Up: Scroll to top (0) to show the start of the section properly (user said "lacks going up").
+                    if (targetY > currentScroll) {
+                        offset = -400; // Going Down
+                    } else {
+                        offset = 0; // Going Up
+                    }
+                }
+                else if (['industries', 'products'].includes(id)) {
+                    offset = 0;
+                }
+
+                // GSAP ScrollToPlugin handles the offset and element lookup automatically with the selector
+                // We use a slight delay or retry if the element isn't immediately available after route change
+                gsap.to(window, {
+                    duration: 1.5,
+                    scrollTo: { y: `#${id}`, offsetY: offset },
+                    ease: "power2.inOut"
+                });
             }
         };
 
-        // Logic for Route switching
         if (location.pathname !== '/') {
+            console.log('Navigating to root before scrolling...');
             navigate('/');
-            // Wait for React to render the Home page before looking for elements
-            setTimeout(scrollToElement, 100);
+            // Wait a bit longer for the substantial homepage to load/hydrate
+            setTimeout(scrollToElement, 500);
         } else {
             scrollToElement();
         }
@@ -58,8 +94,8 @@ const Navigation = () => {
 
     return (
         <nav
-            // Layout logic remains bound to showFullName (scroll) to prevent menu jumping on hover
-            className={`fixed top-0 left-0 w-full z-50 flex items-center p-6 md:p-10 mix-blend-difference text-white transition-all duration-500 ease-in-out ${showFullName ? 'justify-center' : 'justify-between'}`}
+            // Remove mix-blend-difference when menu is open to prevent color inversion issues on the overlay
+            className={`fixed top-0 left-0 w-full z-50 flex items-center p-6 md:p-10 text-white transition-all duration-500 ease-in-out ${isOpen ? '' : 'mix-blend-difference'} ${showFullName ? 'justify-center' : 'justify-between'}`}
         >
             <motion.div
                 layout
@@ -111,20 +147,24 @@ const Navigation = () => {
                     >
                         <div className="hidden md:flex gap-8 items-center">
                             {links.map((link) => (
-                                <button
+                                <a
                                     key={link.name}
-                                    onClick={() => handleScroll(link.id)}
+                                    href={`#${link.id}`}
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        handleScroll(link.id);
+                                    }}
                                     className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
                                 >
                                     {link.name}
-                                </button>
+                                </a>
                             ))}
                             <Link to="/admin" className="ml-4 opacity-50 hover:opacity-100 transition-opacity">
                                 <Lock size={16} />
                             </Link>
                         </div>
 
-                        <button className="md:hidden" onClick={toggleMenu}>
+                        <button className="md:hidden relative z-50 text-white" onClick={toggleMenu}>
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </motion.div>
@@ -135,29 +175,29 @@ const Navigation = () => {
             <AnimatePresence>
                 {isOpen && !showFullName && (
                     <motion.div
-                        initial={{ opacity: 0, y: "-100%" }}
-                        animate={{ opacity: 1, y: "0%" }}
-                        exit={{ opacity: 0, y: "-100%" }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         className="fixed inset-0 bg-stone-900 text-stone-50 flex flex-col justify-center items-center gap-8 z-40 md:hidden"
                     >
                         {links.map((link) => (
-                            <button
+                            <a
                                 key={link.name}
-                                onClick={() => handleScroll(link.id)}
+                                href={`#${link.id}`}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setIsOpen(false);
+                                    handleScroll(link.id);
+                                }}
                                 className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
                             >
                                 {link.name}
-                            </button>
+                            </a>
                         ))}
                         <Link to="/admin" onClick={() => setIsOpen(false)} className="mt-8 text-sm uppercase opacity-50">
                             Área Admin
                         </Link>
-
-                        {/* Close button for mobile menu specifically */}
-                        <button onClick={() => setIsOpen(false)} className="absolute top-6 right-6 p-2">
-                            <X size={24} />
-                        </button>
                     </motion.div>
                 )}
             </AnimatePresence>

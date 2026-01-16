@@ -1,41 +1,47 @@
 {
     "hero": {
-        "bgNames": [
-            "ALFREDO",
-            "DESARROLLADOR",
-            "SOLUCIONADOR"
-        ],
-        "bgRoles": [
-            "MENDOZA",
-            "VISIONARIO",
-            "VELOCISTA"
-        ],
-        "fgLine1": "Full Stack",
-        "fgLine2": "Visionary.",
-        "fgLine1Alt": "Alfredo",
-        "fgLine2Alt": "Mendoza.",
-        "description": "No solo hago minimalismo. Soy Full Stack.\nDescubro tu esencia y la traduzco en cualquier lenguaje visual necesario."
+        "description": "Construyo el software exacto que tu negocio necesita para dejar de perder dinero en procesos manuales. Transformo problemas complejos en herramientas digitales simples que automatizan tu trabajo y multiplican tus resultados, sin jerga técnica ni adornos innecesarios.",
+        "slides": [
+            {
+                "bgTextTop": "ALFREDO",
+                "bgTextBottom": "MENDOZA",
+                "fgLine1": "Full Stack",
+                "fgLine2": "Visionary."
+            },
+            {
+                "bgTextTop": "DESARROLLADOR",
+                "bgTextBottom": "VISIONARIO",
+                "fgLine1": "Alfredo",
+                "fgLine2": "Mendoza."
+            },
+            {
+                "bgTextTop": "ESTRATEGA",
+                "bgTextBottom": "SOFTWARE",
+                "fgLine1": "Sistemas",
+                "fgLine2": "Veloces."
+            }
+        ]
     },
     "philosophy": {
         "sectionId": "philosophy",
         "principles": [
             {
-                "title": "Hiper Personalización",
-                "subtitle": "La Muerte de la Plantilla",
-                "desc": "Tu marca no es un template de $50. Usando IA y datos, creo experiencias que mutan según quien las mira.",
-                "img": "/images/solucion_personalizada.png"
+                "title": "Ingeniería a Medida",
+                "subtitle": "'Personalización' suena a regalo; 'Ingeniería' suena a activo serio.",
+                "desc": "No 'personalizo' plantillas; calculo estructuras. Diseño la maquinaria exacta para tu operación, entregando un activo tecnológico robusto que se revaloriza con tu crecimiento, no un gasto decorativo.",
+                "img": "/images/solucion_personalizada3.png"
             },
             {
-                "title": "Esencia Adaptativa",
-                "subtitle": "Forma sigue a Función",
-                "desc": "No impongo estilos. Descubro la verdad de tu negocio y la codifico. Brutalismo, Minimalismo o Caos Controlado.",
-                "img": "/images/diseño_alma.png"
+                "title": "Sistemas Elásticos",
+                "subtitle": "Sin Deuda Técnica",
+                "desc": "Sistemas robustos que no colapsan cuando tu negocio crece. Estructuras lógicas que eliminan la fricción operativa desde el primer día.",
+                "img": "/images/diseño_alma3.png"
             },
             {
-                "title": "UX Aplicativo",
-                "subtitle": "Herramientas, No Adornos",
-                "desc": "Si es bonito pero no vende, es arte. Yo hago negocios. Interfaces que convierten dudas en depósitos.",
-                "img": "/images/herramientas.png"
+                "title": "Velocidad de Negocio",
+                "subtitle": "Tiempo es Dinero",
+                "desc": "La latencia asesina ventas. Mis desarrollos cargan al instante y ejecutan procesos complejos en milisegundos. Sin tiempos muertos.",
+                "img": "/images/herramientas2.png"
             }
         ]
     },
@@ -114,7 +120,7 @@
         "italicTitle": "Listos.",
         "description": "Implementación inmediata. Sin tiempos muertos.",
         "subDescription": "Olvida los ciclos de desarrollo de 6 meses. Despliega infraestructura empresarial validada.",
-        "ctaLabel": "Ver Demo Live",
+        "ctaLabel": "Solicitar Demo Live",
         "items": [
             {
                 "id": "erp",
@@ -162,56 +168,144 @@
     },
     "projects": [
         {
-            "id": "lumina",
-            "title": "Lumina",
-            "category": "Comercio Electrónico",
+            "id": "nathikas",
+            "title": "Nathikas",
+            "liveUrl": "https://nathikas.com",
+            "category": "Comercio Digital y Area administrativa ",
+            "technicalName": "Sistema de Gestión de Pedidos (OMS) y Tienda Online",
             "year": "2023",
-            "img": "https://picsum.photos/seed/lumina/1920/1080",
-            "shortDesc": "Una solución a medida que resuelve problemas de retención de clientes a través de micro-interacciones intuitivas.",
+            "img": "/images/nathikas1.png",
+            "shortDesc": "Diseñé un sistema de autogestión de pedidos que elimina la fricción del chat manual, sincronizando inventario y logística en tiempo real.",
+            "highlightQuote": "No construí una simple tienda online; diseñé un 'Vendedor Digital Autónomo'.",
             "story": {
-                "conflict": "Lumina tenía un problema de identidad. Vendían lámparas de $500 en una web que parecía un almacén de $5. La tasa de rebote era del 70%. La gente no confiaba en la calidad porque la experiencia digital era barata.",
-                "strategy": "Destruimos el catálogo tradicional. Creamos una experiencia inmersiva donde el producto es el protagonista absoluto. Implementamos modelado 3D interactivo en React Three Fiber y una arquitectura Headless con Shopify para una velocidad brutal.",
-                "result": "La tasa de conversión se triplicó en 3 meses. El ticket promedio subió un 40%. No solo vendimos lámparas, vendimos estatus.",
+                "conflict": "Nathikas sufría de 'Muerte por Éxito'. Cientos de mensajes diarios en WhatsApp preguntando precios, disponibilidad y métodos de pago colapsaban al equipo de ventas. Pasaban el 80% del tiempo respondiendo preguntas repetitivas (precio, stock, envío) y solo el 20% cerrando ventas reales. El tiempo de respuesta lento enfriaba a los clientes impulsivos, perdiendo ingresos por pura ineficiencia operativa.",
+                "strategy": "No construí una simple tienda online; diseñé un 'Vendedor Digital Autónomo'. Desarrollé una SPA (Single Page Application) en Astro y React que gestiona el ciclo de venta completo antes de contactar al humano, eliminando fricción y errores manuales.",
+                "result": "El tiempo de gestión por pedido pasó de 15 minutos de chat a solo 30 segundos de verificación. La tasa de conversión se duplicó al eliminar la fricción de espera, y el sistema maneja picos de venta sin necesidad de aumentar personal.",
                 "tech": [
                     "React",
-                    "Shopify Hydrogen",
-                    "WebGL",
-                    "Tailwind"
+                    "Astro",
+                    "Firebase Firestore",
+                    "Geolocation API"
                 ]
             },
+            "keyFeatures": [
+                {
+                    "title": "Inventario Vivo",
+                    "desc": "Sincronización en tiempo real con Firebase Firestore. El cliente siempre ve lo que realmente existe, eliminando el eterno '¿tienes disponible?'.",
+                    "icon": "Database"
+                },
+                {
+                    "title": "Accesibilidad Nacional",
+                    "desc": "Base de datos completa de todas las agencias disponibles de MRW y Zoom a nivel nacional.",
+                    "icon": "Map"
+                },
+                {
+                    "title": "Checkout Híbrido",
+                    "desc": "Generación de un 'Ticket de Pedido Inteligente' para WhatsApp. El mensaje llega pre-validado con ítems, totales y datos de pago. 0 errores de transcripción.",
+                    "icon": "MessageSquare"
+                },
+                {
+                    "title": "Integración Sensy Bot",
+                    "desc": "Chat de WhatsApp potenciado con IA para dudas, quejas y devoluciones.",
+                    "icon": "Bot"
+                }
+            ],
+            "devices": {
+                "desktop": "/images/nathikas/nathikasAdmin.png",
+                "tablet": "/images/nathikas/nathikasTablet.png",
+                "mobile": "/images/nathikas/nathikasMobil.png"
+            },
             "gallery": [
-                "https://picsum.photos/seed/lumina1/800/600",
-                "https://picsum.photos/seed/lumina2/800/600",
-                "https://picsum.photos/seed/lumina3/800/600"
+                {
+                    "src": "/images/nathikas/descuento.png",
+                    "title": "Sistema de Descuentos Dinámicos"
+                },
+                {
+                    "src": "/images/nathikas/hero.png",
+                    "title": "Interfaz de Usuario Inmersiva"
+                },
+                {
+                    "src": "/images/nathikas/multimedia.png",
+                    "title": "Gestión de Recursos Multimedia"
+                },
+                {
+                    "src": "/images/nathikas/helpers.png",
+                    "title": "Ayudas al usuario"
+                }
             ]
         },
         {
-            "id": "apex-logic",
-            "title": "Apex Logic",
-            "category": "Panel SaaS",
-            "year": "2024",
-            "img": "https://picsum.photos/seed/apex/1920/1080",
-            "shortDesc": "Dashboard analítico para traders de alta frecuencia. Datos en tiempo real sin latencia visual.",
+            "id": "giootattoo",
+            "title": "GiooTattoo",
+            "category": "Lading Page, Formulario Dinamico, IA",
+            "technicalName": "Portafolio Inmersivo & Formulario Dinámico",
+            "year": "2026",
+            "img": "https://picsum.photos/seed/gio/1920/1080",
+            "shortDesc": "Diseñé una experiencia web inmersiva para un estudio de tatuajes de autor. Combiné estética atmosférica con un formulario de cotización inteligente potenciado por IA.",
+            "highlightQuote": "No solo digitalicé un portafolio; estructuré y profesionalicé todo el proceso de cotización del artista, filtrando curiosos y cerrando citas.",
             "story": {
-                "conflict": "Los traders odian esperar. La plataforma anterior tenía un retraso de 2 segundos en la carga de datos. En trading, 2 segundos es una eternidad. Apex estaba perdiendo usuarios frente a competidores más rápidos.",
-                "strategy": "Reescribimos el frontend usando WebSockets directos y optimización agresiva de renderizado. Diseñamos una interfaz oscura de alto contraste para reducir la fatiga visual en sesiones largas.",
-                "result": "Latencia visual reducida a <50ms. La retención de usuarios activos diarios aumentó un 85%.",
+                "conflict": "El artista perdía horas intentando descifrar ideas vagas de clientes por WhatsApp. La falta de estructura en las solicitudes (sin referencia visual, zona del cuerpo, estilo) resultaba en cotizaciones inexactas y una percepción de marca informal.",
+                "strategy": "Diseñé una experiencia 'Ink & Shadow' con una pantalla de carga cinematográfica y ambientación musical para una inmersión total. Implementé un 'Asistente de Tatuaje' donde la IA genera previsualizaciones del diseño sobre el mockup de la zona del cuerpo seleccionada.",
+                "result": "La percepción de la marca se profesionalizó instantáneamente. Las solicitudes ahora llegan estructuradas con visualizaciones claras. El estilo visual oscuro y la experiencia sonora filtran naturalmente al público objetivo del artista.",
                 "tech": [
-                    "Next.js",
-                    "WebSockets",
-                    "D3.js",
-                    "Firebase"
+                    "React 19",
+                    "TypeScript",
+                    "Vite",
+                    "Tailwind CSS",
+                    "Google Gemini API"
                 ]
             },
+            "keyFeatures": [
+                {
+                    "title": "Asistente de Cotización",
+                    "desc": "Formulario interactivo paso a paso que guía al usuario para definir su tatuaje ideal, capturando todos los detalles técnicos necesarios.",
+                    "icon": "ClipboardList"
+                },
+                {
+                    "title": "Inmersión Sensorial",
+                    "desc": "Pantalla de carga reveladora y diseño sonoro ambiental que sumergen al usuario en la atmósfera del estudio desde el primer clic.",
+                    "icon": "Sparkles"
+                },
+                {
+                    "title": "IA Genereativa & Mockups",
+                    "desc": "Integración con Google Gemini para generar bocetos de tatuajes y visualizarlos automáticamente sobre el mockup de la zona del cuerpo.",
+                    "icon": "Bot"
+                },
+                {
+                    "title": "Galería Estructurada",
+                    "desc": "Organización visual de estilos (Realismo, Blackwork) que ayuda al cliente a identificar y seleccionar referencias precisas.",
+                    "icon": "Grid"
+                }
+            ],
+            "devices": {
+                "desktop": "https://picsum.photos/seed/giodesk/1920/1080",
+                "tablet": "https://picsum.photos/seed/giotab/800/600",
+                "mobile": "https://picsum.photos/seed/giomob/375/812"
+            },
             "gallery": [
-                "https://picsum.photos/seed/apex1/800/600",
-                "https://picsum.photos/seed/apex2/800/600"
+                {
+                    "src": "https://picsum.photos/seed/giowiz/1920/1080",
+                    "title": "Asistente Interactivo"
+                },
+                {
+                    "src": "https://picsum.photos/seed/giostyle/1920/1080",
+                    "title": "Selección de Estilos"
+                },
+                {
+                    "src": "https://picsum.photos/seed/gioai/1920/1080",
+                    "title": "Generación de Mockups con IA"
+                },
+                {
+                    "src": "https://picsum.photos/seed/giohero/1920/1080",
+                    "title": "Experiencia Inmersiva"
+                }
             ]
         },
         {
             "id": "velvet",
             "title": "Velvet",
             "category": "Portafolio de Moda",
+            "technicalName": "Experiencia E-commerce Headless",
             "year": "2022",
             "img": "https://picsum.photos/seed/velvet/1920/1080",
             "shortDesc": "Editorial digital para una marca de ropa emergente. Minimalismo brutalista.",
@@ -237,6 +331,9 @@
         "title": "¿Listo para dejar de",
         "italicTitle": "ser aburrido?",
         "email": "hello@alfredomendoza.com",
+        "whatsapp": "+584120000000",
+        "tiktok": "https://www.tiktok.com/@alfredomendoza",
+        "instagram": "https://www.instagram.com/alfredomendoza",
         "copyright": "Alfredo Mendoza. Todos los derechos reservados."
     },
     "navigation": {

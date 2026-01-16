@@ -62,7 +62,7 @@ const Chatbot: React.FC = () => {
 
   return (
     <>
-      <div className="fixed bottom-8 right-8 z-50">
+      <div className="fixed bottom-8 left-8 z-50">
         <AnimatePresence>
           {!isOpen && (
             <motion.button
@@ -85,7 +85,7 @@ const Chatbot: React.FC = () => {
             initial={{ y: 50, opacity: 0, scale: 0.9 }}
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 50, opacity: 0, scale: 0.9 }}
-            className="fixed bottom-8 right-8 w-full max-w-[350px] h-[500px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-stone-200"
+            className="fixed bottom-8 left-8 w-full max-w-[350px] h-[500px] bg-white rounded-2xl shadow-2xl z-50 flex flex-col overflow-hidden border border-stone-200"
           >
             {/* Header */}
             <div className="bg-stone-900 text-white p-4 flex justify-between items-center">
