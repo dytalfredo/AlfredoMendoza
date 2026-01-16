@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowRight, ArrowLeft, CheckCircle2, ChevronRight, Send, Briefcase, Zap, Globe, Cpu } from 'lucide-react';
+import content from '../data/content.json';
 
 interface ContactModalProps {
     isOpen: boolean;
@@ -55,25 +56,34 @@ const ContactModal: React.FC<ContactModalProps> = ({ isOpen, onClose }) => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        // Construct mailto for now, or prepare for API
-        const subject = `Nuevo Proyecto: ${formData.projectType} - ${formData.company}`;
-        const body = `
-Nombre: ${formData.name}
-Email: ${formData.email}
-Empresa: ${formData.company}
 
-Objetivo: ${formData.goal}
-Esencia: ${formData.brandEssence.join(', ')}
+        const message = `
+*Nuevo Proyecto: ${formData.projectType}*
 
-Tipo Proyecto: ${formData.projectType}
-Timeline: ${formData.timeline}
-Presupuesto: ${formData.budget}
+*Información General:*
+- Nombre: ${formData.name}
+- Email: ${formData.email}
+- Empresa: ${formData.company}
 
-Stack Actual: ${formData.currentStack}
-Integraciones: ${formData.integrations.join(', ')}
-Detalles: ${formData.details}
-        `;
-        window.location.href = `mailto:alfredo@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+*Visión:*
+- Objetivo: ${formData.goal}
+- Esencia: ${formData.brandEssence.join(', ')}
+
+*Detalles del Proyecto:*
+- Tipo: ${formData.projectType}
+- Timeline: ${formData.timeline}
+- Presupuesto: ${formData.budget}
+
+*Contexto Técnico:*
+- Stack Actual: ${formData.currentStack}
+- Integraciones: ${formData.integrations.join(', ')}
+- Detalles Adicionales: ${formData.details}
+        `.trim();
+
+        const whatsappNumber = content.contact.whatsapp.replace('+', '');
+        const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+        window.open(url, '_blank');
         onClose();
     };
 
