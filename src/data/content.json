@@ -1,4 +1,30 @@
 {
+    "pages": {
+        "home": {
+            "title": "Alfredo Mendoza | Arquitecto Digital & Full Stack Visionary",
+            "description": "Transformo problemas manuales en software autónomo. Ingeniería de valor para negocios que buscan escalar sin caos.",
+            "ogTitle": "Alfredo Mendoza | Arquitecto Digital & Full Stack Visionary",
+            "ogDescription": "Transformo problemas manuales en software autónomo. Ingeniería de valor para negocios que buscan escalar sin caos.",
+            "ogImage": "/images/portafolioweb.webp",
+            "keywords": "Desarrollador Web, Full Stack, Astro, React, Automatización, Negocios Digitales, Software a medida"
+        },
+        "blog": {
+            "title": "El Blog | Estrategia, Código & Negocios",
+            "description": "Una colección de planos y estrategias para el mundo digital. Artículos sobre automatización, desarrollo web y crecimiento empresarial.",
+            "ogTitle": "El Blog | Estrategia, Código & Negocios",
+            "ogDescription": "Una colección de planos y estrategias para el mundo digital. Artículos sobre automatización, desarrollo web y crecimiento empresarial.",
+            "ogImage": "/images/blogO.webp",
+            "keywords": "Blog Tecnología, Estrategia Digital, Tutoriales Astro, React, Automatización de Negocios"
+        },
+        "contact": {
+            "title": "Agenda tu Consultoría | Deja de ser aburrido",
+            "description": "¿Listo para una transformación digital real? Si tu negocio factura pero no escala, hablemos. Estrategia y código de alto nivel.",
+            "ogTitle": "Agenda tu Consultoría | Deja de ser aburrido",
+            "ogDescription": "¿Listo para una transformación digital real? Si tu negocio factura pero no escala, hablemos. Estrategia y código de alto nivel.",
+            "ogImage": "/images/contactoAlfredo.webp",
+            "keywords": "Consultoría Software, Desarrollo Web Venezuela, Contacto Alfredo Mendoza, Presupuesto Web"
+        }
+    },
     "hero": {
         "description": "Construyo el software exacto que tu negocio necesita para dejar de perder dinero en procesos manuales. Transformo problemas complejos en herramientas digitales simples que automatizan tu trabajo y multiplican tus resultados, sin jerga técnica ni adornos innecesarios.",
         "slides": [
@@ -244,12 +270,12 @@
             "category": "Comercio Digital y Area administrativa ",
             "technicalName": "Sistema de Gestión de Pedidos (OMS) y Tienda Online",
             "year": "2023",
-            "img": "/images/nathikas1.png",
+            "img": "/images/nathikas1.webp",
             "shortDesc": "Diseñé un sistema de autogestión de pedidos que elimina la fricción del chat manual, sincronizando inventario y logística en tiempo real.",
             "og": {
                 "title": "Nathikas: Sistema de Pedidos Automatizado",
                 "description": "Transformé el caos del WhatsApp en un sistema de ventas autónomo. Duplicamos conversiones eliminando fricción.",
-                "image": "/images/nathikas1.png",
+                "image": "/images/nathikas1.webp",
                 "type": "website"
             },
             "highlightQuote": "No construí una simple tienda online; diseñé un 'Vendedor Digital Autónomo'.",
@@ -317,12 +343,12 @@
             "category": "Lading Page, Formulario Dinamico, IA",
             "technicalName": "Portafolio Inmersivo & Formulario Dinámico",
             "year": "2026",
-            "img": "/images/gio/gio.jpg",
+            "img": "/images/gio/gio.webp",
             "shortDesc": "Diseñé una experiencia web inmersiva para un estudio de tatuajes de autor. Combiné estética atmosférica con un formulario de cotización inteligente potenciado por IA.",
             "og": {
                 "title": "GiooTattoo: Arte en Tinta & Código",
                 "description": "Portafolio inmersivo con IA generativa. Experiencia sensorial que filtra curiosos y profesionaliza cotizaciones.",
-                "image": "/images/gio/gio.jpg",
+                "image": "/images/gio/gio.webp",
                 "type": "website"
             },
             "highlightQuote": "No solo digitalicé un portafolio; estructuré y profesionalicé todo el proceso de cotización del artista, filtrando curiosos y cerrando citas.",

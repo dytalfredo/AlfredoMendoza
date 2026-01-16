@@ -1,0 +1,250 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { StandaloneNavigation as Navigation } from "../../components/Navigation";
+import Footer from "../../components/Footer";
+import contentData from "../../data/content.json";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+    const projects = contentData.projects;
+    return projects.map((project) => ({
+        params: { id: project.id },
+        props: { project },
+    }));
+}
+
+const { project } = Astro.props;
+const { title, technicalName, shortDesc, story, gallery, og } = project;
+
+// OG fallback to main image if og.image not set
+const ogImage = og?.image || project.img;
+const ogTitle = og?.title || title;
+const ogDescription = og?.description || shortDesc;
+---
+
+<BaseLayout
+    title={`${title} | Alfredo Mendoza`}
+    description={shortDesc}
+    ogTitle={ogTitle}
+    ogDescription={ogDescription}
+    ogImage={ogImage}
+    ogType="article"
+>
+    <Navigation client:only="react" />
+
+    <main class="min-h-screen bg-stone-50 text-stone-900 pt-32 pb-20">
+        <div class="max-w-7xl mx-auto px-6 md:px-12">
+            <!-- Header -->
+            <header class="mb-16 md:mb-24">
+                <a
+                    href="/blog"
+                    class="inline-flex items-center gap-2 text-stone-400 hover:text-terracotta transition-colors mb-8 text-sm font-bold uppercase tracking-widest"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-4 w-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                    Volver al Portafolio
+                </a>
+
+                <div class="space-y-6">
+                    <span
+                        class="text-terracotta text-sm font-bold uppercase tracking-widest block"
+                        >{project.category}</span
+                    >
+                    <h1
+                        class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-stone-900 leading-tight"
+                    >
+                        {title}
+                    </h1>
+                    <p
+                        class="text-xl md:text-3xl font-light text-stone-500 max-w-4xl"
+                    >
+                        {technicalName}
+                    </p>
+                </div>
+            </header>
+
+            <!-- Main Image -->
+            <div
+                class="mb-20 md:mb-32 rounded-3xl overflow-hidden shadow-2xl bg-stone-900 relative aspect-video group"
+            >
+                <img
+                    src={project.img}
+                    alt={title}
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+                <!-- Data Sidebar -->
+                <div class="lg:col-span-4 space-y-12">
+                    <div
+                        class="p-8 bg-white rounded-2xl shadow-sm border border-stone-100"
+                    >
+                        <div class="space-y-8">
+                            <!-- Challenge -->
+                            <div>
+                                <h3
+                                    class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3"
+                                >
+                                    El Reto (Challenge)
+                                </h3>
+                                <p
+                                    class="text-base text-stone-700 leading-relaxed"
+                                >
+                                    {story.conflict}
+                                </p>
+                            </div>
+
+                            <!-- Stack -->
+                            <div>
+                                <h3
+                                    class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-3"
+                                >
+                                    Tech Stack
+                                </h3>
+                                <div class="flex flex-wrap gap-2">
+                                    {
+                                        story.tech.map((t) => (
+                                            <span class="px-3 py-1 bg-stone-100 ring-1 ring-stone-200 text-stone-600 text-xs font-medium rounded-full">
+                                                {t}
+                                            </span>
+                                        ))
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Year/Info -->
+                            <div
+                                class="flex justify-between items-center pt-8 border-t border-stone-100"
+                            >
+                                <div>
+                                    <h3
+                                        class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1"
+                                    >
+                                        Año
+                                    </h3>
+                                    <p class="font-serif text-lg">
+                                        {project.year}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA -->
+                        {
+                            project.liveUrl && (
+                                <div class="mt-8 pt-6 border-t border-stone-100">
+                                    <a
+                                        href={project.liveUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="block w-full bg-stone-900 hover:bg-terracotta text-white text-center py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+                                    >
+                                        Visitar Proyecto
+                                    </a>
+                                </div>
+                            )
+                        }
+                    </div>
+                </div>
+
+                <!-- Main Story -->
+                <div class="lg:col-span-8">
+                    <div class="prose prose-lg prose-stone max-w-none">
+                        <h2 class="font-serif text-4xl text-stone-900 mb-8">
+                            La Estrategia
+                        </h2>
+                        <p class="text-xl leading-relaxed text-stone-600 mb-12">
+                            {story.strategy}
+                        </p>
+
+                        <div
+                            class="my-16 md:-ml-12 border-l-4 border-terracotta pl-8 md:pl-12 py-4"
+                        >
+                            <blockquote
+                                class="text-3xl md:text-4xl font-serif italic text-stone-800 leading-snug"
+                            >
+                                "{project.highlightQuote}"
+                            </blockquote>
+                        </div>
+
+                        <h2 class="font-serif text-4xl text-stone-900 mb-8">
+                            El Resultado
+                        </h2>
+                        <p class="text-xl leading-relaxed text-stone-600 mb-12">
+                            {story.result}
+                        </p>
+                    </div>
+
+                    {/* Features Grid */}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
+                        {
+                            project.keyFeatures &&
+                                project.keyFeatures.map((feature) => (
+                                    <div class="p-6 bg-white border border-stone-100 rounded-xl">
+                                        <h3 class="font-bold text-stone-900 mb-2">
+                                            {feature.title}
+                                        </h3>
+                                        <p class="text-sm text-stone-500 leading-relaxed">
+                                            {feature.desc}
+                                        </p>
+                                    </div>
+                                ))
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Section -->
+            {
+                gallery && gallery.length > 0 && (
+                    <section class="mt-32 md:mt-48">
+                        <div class="text-center mb-16">
+                            <span class="text-terracotta text-sm font-bold uppercase tracking-widest">
+                                Galería Visual
+                            </span>
+                            <h2 class="text-4xl md:text-6xl font-serif font-bold text-stone-900 mt-4">
+                                Interfaz & Detalles
+                            </h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                            {gallery.map((item, index) => (
+                                <div
+                                    class={`space-y-4 ${index % 2 !== 0 ? "md:mt-12" : ""}`}
+                                >
+                                    {" "}
+                                    {/* Staggered grid effect */}
+                                    <div class="rounded-2xl overflow-hidden shadow-xl bg-stone-100 border border-stone-200 group">
+                                        <img
+                                            src={item.src}
+                                            alt={item.title}
+                                            class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                    </div>
+                                    <p class="text-sm font-mono text-stone-500 text-center uppercase tracking-wider">
+                                        {item.title}
+                                    </p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                )
+            }
+        </div>
+    </main>
+
+    <Footer />
+</BaseLayout>

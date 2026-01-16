@@ -4,20 +4,19 @@ import App from "../App";
 import "../styles/global.css";
 import contentData from "../data/content.json";
 
-// Get site metadata
-const siteTitle =
-  "Alfredo Mendoza | Arquitecto Digital & Desarrollador Full Stack";
-const siteDescription =
-  "Transformo negocios en máquinas digitales autónomas. Desarrollo web de alto rendimiento, sistemas a medida y estrategias de automatización.";
+// Get site metadata from JSON
+const { title, description, ogTitle, ogDescription, ogImage, keywords } =
+  contentData.pages.home;
 ---
 
 <BaseLayout
-  title={siteTitle}
-  description={siteDescription}
-  ogTitle="Alfredo Mendoza | Arquitecto Digital"
-  ogDescription="Transformo negocios en máquinas digitales autónomas. No solo código, ingeniería de valor."
-  ogImage="/images/og-image.jpg"
+  title={title}
+  description={description}
+  ogTitle={ogTitle}
+  ogDescription={ogDescription}
+  ogImage={ogImage}
   ogUrl={Astro.url.origin}
+  keywords={keywords}
 >
   <!-- Main App Wrapper (Client-side usage) -->
   <App client:only="react" />

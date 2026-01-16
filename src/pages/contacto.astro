@@ -2,16 +2,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ContactFormPage from "../components/ContactFormPage";
 import "../styles/global.css";
+import contentData from "../data/content.json";
+
+const { title, description, ogTitle, ogDescription, ogImage, keywords } =
+    contentData.pages.contact;
 ---
 
 <BaseLayout
-    title="Solicitar Proyecto | Alfredo Mendoza - Arquitecto Digital"
-    description="Solicita tu proyecto personalizado con Alfredo Mendoza. Formulario inteligente de 4 pasos para definir exactamente lo que tu negocio necesita."
-    ogTitle="Solicitar Proyecto | Alfredo Mendoza"
-    ogDescription="Formulario inteligente para diseñar tu proyecto digital. Sin tonterías, solo preguntas que importan."
-    ogImage="/images/og-contact.jpg"
+    title={title}
+    description={description}
+    ogTitle={ogTitle}
+    ogDescription={ogDescription}
+    ogImage={ogImage}
     ogUrl={`${Astro.url.origin}/contacto`}
-    keywords="Solicitar Proyecto, Presupuesto Web, Desarrollo a Medida, Alfredo Mendoza"
+    keywords={keywords}
 >
     <!-- Contact Form Component (Client-side only) -->
     <ContactFormPage client:only="react" />

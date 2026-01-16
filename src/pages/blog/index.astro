@@ -8,19 +8,19 @@ import "../../styles/global.css";
 // Get projects data
 const projectsData = contentData.projects;
 
-// Blog metadata
-const blogTitle = "Blog | Alfredo Mendoza";
-const blogDescription =
-    "Reflexiones sobre tecnología, negocios y el arte de construir software que factura. Sin relleno.";
+// Blog metadata from JSON
+const { title, description, ogTitle, ogDescription, ogImage, keywords } =
+    contentData.pages.blog;
 ---
 
 <BaseLayout
-    title={blogTitle}
-    description={blogDescription}
-    ogTitle="Blog | Alfredo Mendoza - Pensamientos & Estrategias"
-    ogDescription={blogDescription}
-    ogImage="/images/og-blog.jpg"
+    title={title}
+    description={description}
+    ogTitle={ogTitle}
+    ogDescription={ogDescription}
+    ogImage={ogImage}
     ogUrl={`${Astro.url.origin}/blog`}
+    keywords={keywords}
 >
     {/* Navigation integrated via React Component */}
     <Navigation client:only="react" />
