@@ -524,7 +524,7 @@ const DigitalSovereignty = () => {
 
                             <div className="relative z-10">
                                 <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6 flex items-center gap-3">
-                                    <span className="text-3xl">⚠️</span>
+                                    <span className="inline-block w-3 h-3 rounded-full bg-red-500 shadow-lg shadow-red-500/50"></span>
                                     La Realidad Cambiaria
                                 </h3>
                                 <div className="space-y-4 text-stone-300 leading-relaxed">
@@ -533,19 +533,19 @@ const DigitalSovereignty = () => {
                                     </p>
                                     <ul className="space-y-3 ml-4">
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1">•</span>
+                                            <span className="inline-block w-2 h-2 rounded-full bg-terracotta mt-2 shadow-md shadow-terracotta/50"></span>
                                             <span>Volatilidad cambiaria que dispara costos de un día para otro</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1">•</span>
+                                            <span className="inline-block w-2 h-2 rounded-full bg-terracotta mt-2 shadow-md shadow-terracotta/50"></span>
                                             <span>Inflación galopante que devalúa tu inversión en tiempo real</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1">•</span>
+                                            <span className="inline-block w-2 h-2 rounded-full bg-terracotta mt-2 shadow-md shadow-terracotta/50"></span>
                                             <span>Comisiones bancarias múltiples y tipos de cambio desfavorables</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1">•</span>
+                                            <span className="inline-block w-2 h-2 rounded-full bg-terracotta mt-2 shadow-md shadow-terracotta/50"></span>
                                             <span>Dependencia de plataformas extranjeras con soporte en inglés</span>
                                         </li>
                                     </ul>
@@ -567,7 +567,7 @@ const DigitalSovereignty = () => {
 
                             <div className="relative z-10">
                                 <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6 flex items-center gap-3 text-stone-900">
-                                    <span className="text-3xl">✅</span>
+                                    <span className="inline-block w-3 h-3 rounded-full bg-green-500 shadow-lg shadow-green-500/50"></span>
                                     La Ventaja Local
                                 </h3>
                                 <div className="space-y-4 text-stone-700 leading-relaxed">
@@ -576,23 +576,23 @@ const DigitalSovereignty = () => {
                                     </p>
                                     <ul className="space-y-3 ml-4">
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1 text-xl">💰</span>
+                                            <span className="inline-block w-2.5 h-2.5 rounded-full bg-terracotta mt-2 shadow-lg shadow-terracotta/60 animate-pulse"></span>
                                             <span><strong>Sin riesgo cambiario.</strong> Presupuestos y pagos en moneda local estables</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1 text-xl">📍</span>
+                                            <span className="inline-block w-2.5 h-2.5 rounded-full bg-terracotta mt-2 shadow-lg shadow-terracotta/60 animate-pulse"></span>
                                             <span><strong>Zona horaria Venezuela.</strong> Reuniones en horario laboral, sin desajustes</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1 text-xl">🤝</span>
+                                            <span className="inline-block w-2.5 h-2.5 rounded-full bg-terracotta mt-2 shadow-lg shadow-terracotta/60 animate-pulse"></span>
                                             <span><strong>Soporte en español.</strong> Comunicación directa sin intermediarios</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1 text-xl">🇻🇪</span>
+                                            <span className="inline-block w-2.5 h-2.5 rounded-full bg-terracotta mt-2 shadow-lg shadow-terracotta/60 animate-pulse"></span>
                                             <span><strong>Entiendo tu realidad.</strong> Conozco las restricciones, oportunidades y necesidades del mercado venezolano</span>
                                         </li>
                                         <li className="flex items-start gap-3">
-                                            <span className="text-terracotta mt-1 text-xl">⚡</span>
+                                            <span className="inline-block w-2.5 h-2.5 rounded-full bg-terracotta mt-2 shadow-lg shadow-terracotta/60 animate-pulse"></span>
                                             <span><strong>Tecnología internacional.</strong> Calidad global a precios justos para el contexto local</span>
                                         </li>
                                     </ul>
