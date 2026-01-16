@@ -86,11 +86,7 @@ const FloatingActions: React.FC<FloatingActionsProps> = ({ onOpenContact }) => {
             {/* CTA Button */}
             <motion.a
                 variants={itemVariants}
-                href="#contact"
-                onClick={(e) => {
-                    e.preventDefault();
-                    onOpenContact();
-                }}
+                href="/contacto"
                 className="order-2 md:order-2 group relative flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-3 bg-black text-white rounded-full font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] font-bold shadow-2xl overflow-hidden hover:pr-14 transition-all duration-500 pointer-events-auto cursor-pointer"
             >
                 <span className="relative z-10 whitespace-nowrap">Contactar</span>

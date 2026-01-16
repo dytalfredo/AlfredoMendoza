@@ -19,29 +19,71 @@
                 "bgTextBottom": "SOFTWARE",
                 "fgLine1": "Sistemas",
                 "fgLine2": "Veloces."
+            },
+            {
+                "bgTextTop": "ALFREDO",
+                "bgTextBottom": "MENDOZA",
+                "fgLine1": "Estratega",
+                "fgLine2": "Software."
             }
         ]
     },
-    "philosophy": {
-        "sectionId": "philosophy",
+    "about": {
+        "sectionId": "about",
+        "title": "Sobre Mí",
+        "headline": "No soy una agencia. Soy tu socio estratégico.",
+        "description": "Detrás de cada línea de código hay una decisión de negocio. No me limito a cumplir requisitos técnicos; cuestiono, propongo y construyo soluciones que atacan la raíz de tus problemas operativos.\n\nMi obsesión es la eficiencia. Si no factura, no ahorra tiempo o no mejora la experiencia, no debería existir. Busco socios que entiendan que el software es un activo, no un adorno.",
+        "image": "/images/alfredoMendoza.png",
+        "stats": [
+            {
+                "label": "Años de Experiencia",
+                "value": "+5"
+            },
+            {
+                "label": "Proyectos Desplegados",
+                "value": "+10"
+            },
+            {
+                "label": "Retorno de Inversión",
+                "value": "x10"
+            },
+            {
+                "label": "Tiempo Promedio de Entrega",
+                "value": "15 días"
+            },
+            {
+                "label": "Page Speed",
+                "value": ">95%"
+            },
+            {
+                "label": "Todos los meses",
+                "value": "Auditoria"
+            }
+        ],
+        "techStack": [
+            "React",
+            "TypeScript",
+            "Node.js",
+            "Next.js",
+            "Tailwind",
+            "AWS",
+            "AI Integration",
+            "PHP",
+            "MySql",
+            "C#"
+        ],
         "principles": [
             {
                 "title": "Ingeniería a Medida",
-                "subtitle": "'Personalización' suena a regalo; 'Ingeniería' suena a activo serio.",
-                "desc": "No 'personalizo' plantillas; calculo estructuras. Diseño la maquinaria exacta para tu operación, entregando un activo tecnológico robusto que se revaloriza con tu crecimiento, no un gasto decorativo.",
-                "img": "/images/solucion_personalizada3.png"
+                "desc": "Diseño la maquinaria exacta para tu operación. Nada sobra, nada falta."
             },
             {
-                "title": "Sistemas Elásticos",
-                "subtitle": "Sin Deuda Técnica",
-                "desc": "Sistemas robustos que no colapsan cuando tu negocio crece. Estructuras lógicas que eliminan la fricción operativa desde el primer día.",
-                "img": "/images/diseño_alma3.png"
+                "title": "Esencia Adaptativa",
+                "desc": "Arquitecturas listas para escalar x10 sin deuda técnica."
             },
             {
                 "title": "Velocidad de Negocio",
-                "subtitle": "Tiempo es Dinero",
-                "desc": "La latencia asesina ventas. Mis desarrollos cargan al instante y ejecutan procesos complejos en milisegundos. Sin tiempos muertos.",
-                "img": "/images/herramientas2.png"
+                "desc": "Si es lento, se pierde dinero. Rendimiento obsesivo."
             }
         ]
     },
@@ -50,31 +92,59 @@
         "items": [
             {
                 "label": "Estudios Tatuajes",
-                "desc": "Sistemas de citas automatizados, cobro de depósitos y galerías que venden."
+                "examples": [
+                    "Agenda & Depósitos Automáticos",
+                    "Consentimiento Informado Digital",
+                    "Galería de Estilos Filtrable"
+                ]
             },
             {
                 "label": "Estudios Foto",
-                "desc": "Selección de pruebas en la nube y entrega digital instantánea."
+                "examples": [
+                    "Selección de Fotos en Nube",
+                    "Entrega Digital Instantánea",
+                    "Booking de Sesiones"
+                ]
             },
             {
                 "label": "Restaurantes",
-                "desc": "Menús QR interactivos que cuentan historias, no PDFs aburridos."
+                "examples": [
+                    "Menú QR Interactivo",
+                    "Pedidos & Pagos en Mesa",
+                    "Control de Stock en Vivo"
+                ]
             },
             {
                 "label": "Tiendas Concepto",
-                "desc": "E-commerce inmersivo con sincronización de inventario real."
+                "examples": [
+                    "Probador Virtual / 3D",
+                    "Personal Shopper IA",
+                    "Sincronización Stock Real"
+                ]
             },
             {
                 "label": "Consultorías",
-                "desc": "Embudos de conversión que filtran curiosos y agendan clientes."
+                "examples": [
+                    "Lead Scoring Automático",
+                    "Agendamiento Inteligente",
+                    "Pasarela de Cobro Recurrente"
+                ]
             },
             {
                 "label": "Manufactura",
-                "desc": "Catálogos B2B dinámicos y cotizadores en tiempo real."
+                "examples": [
+                    "Catálogo B2B Dinámico",
+                    "Cotizador Industrial Real",
+                    "Portal de Distribuidores"
+                ]
             },
             {
                 "label": "Servicios",
-                "desc": "Autoridad digital instantánea. Convierte la duda en venta."
+                "examples": [
+                    "Plataforma de Cursos",
+                    "Cotizador de Servicios",
+                    "Dashboard de Cliente"
+                ]
             }
         ]
     },
@@ -176,6 +246,12 @@
             "year": "2023",
             "img": "/images/nathikas1.png",
             "shortDesc": "Diseñé un sistema de autogestión de pedidos que elimina la fricción del chat manual, sincronizando inventario y logística en tiempo real.",
+            "og": {
+                "title": "Nathikas: Sistema de Pedidos Automatizado",
+                "description": "Transformé el caos del WhatsApp en un sistema de ventas autónomo. Duplicamos conversiones eliminando fricción.",
+                "image": "/images/nathikas1.png",
+                "type": "website"
+            },
             "highlightQuote": "No construí una simple tienda online; diseñé un 'Vendedor Digital Autónomo'.",
             "story": {
                 "conflict": "Nathikas sufría de 'Muerte por Éxito'. Cientos de mensajes diarios en WhatsApp preguntando precios, disponibilidad y métodos de pago colapsaban al equipo de ventas. Pasaban el 80% del tiempo respondiendo preguntas repetitivas (precio, stock, envío) y solo el 20% cerrando ventas reales. El tiempo de respuesta lento enfriaba a los clientes impulsivos, perdiendo ingresos por pura ineficiencia operativa.",
@@ -237,11 +313,18 @@
         {
             "id": "giootattoo",
             "title": "GiooTattoo",
+            "liveUrl": "https://gio-estudio.netlify.app/",
             "category": "Lading Page, Formulario Dinamico, IA",
             "technicalName": "Portafolio Inmersivo & Formulario Dinámico",
             "year": "2026",
-            "img": "https://picsum.photos/seed/gio/1920/1080",
+            "img": "/images/gio/gio.jpg",
             "shortDesc": "Diseñé una experiencia web inmersiva para un estudio de tatuajes de autor. Combiné estética atmosférica con un formulario de cotización inteligente potenciado por IA.",
+            "og": {
+                "title": "GiooTattoo: Arte en Tinta & Código",
+                "description": "Portafolio inmersivo con IA generativa. Experiencia sensorial que filtra curiosos y profesionaliza cotizaciones.",
+                "image": "/images/gio/gio.jpg",
+                "type": "website"
+            },
             "highlightQuote": "No solo digitalicé un portafolio; estructuré y profesionalicé todo el proceso de cotización del artista, filtrando curiosos y cerrando citas.",
             "story": {
                 "conflict": "El artista perdía horas intentando descifrar ideas vagas de clientes por WhatsApp. La falta de estructura en las solicitudes (sin referencia visual, zona del cuerpo, estilo) resultaba en cotizaciones inexactas y una percepción de marca informal.",
@@ -278,51 +361,112 @@
                 }
             ],
             "devices": {
-                "desktop": "https://picsum.photos/seed/giodesk/1920/1080",
-                "tablet": "https://picsum.photos/seed/giotab/800/600",
-                "mobile": "https://picsum.photos/seed/giomob/375/812"
+                "desktop": "/images/gio/gioEscritorio.png",
+                "tablet": "/images/gio/gioTablet.png",
+                "mobile": "/images/gio/gioMobil.png"
             },
             "gallery": [
                 {
-                    "src": "https://picsum.photos/seed/giowiz/1920/1080",
+                    "src": "/images/gio/gio1.png",
                     "title": "Asistente Interactivo"
                 },
                 {
-                    "src": "https://picsum.photos/seed/giostyle/1920/1080",
+                    "src": "/images/gio/gio2.png",
                     "title": "Selección de Estilos"
                 },
                 {
-                    "src": "https://picsum.photos/seed/gioai/1920/1080",
-                    "title": "Generación de Mockups con IA"
+                    "src": "/images/gio/gio3.png",
+                    "title": "Mensaje de Gracias"
                 },
                 {
-                    "src": "https://picsum.photos/seed/giohero/1920/1080",
-                    "title": "Experiencia Inmersiva"
+                    "src": "/images/gio/gio4.png",
+                    "title": "Temas Dark & Light"
                 }
             ]
         },
         {
-            "id": "velvet",
-            "title": "Velvet",
-            "category": "Portafolio de Moda",
-            "technicalName": "Experiencia E-commerce Headless",
-            "year": "2022",
-            "img": "https://picsum.photos/seed/velvet/1920/1080",
-            "shortDesc": "Editorial digital para una marca de ropa emergente. Minimalismo brutalista.",
+            "id": "cobraconroberth",
+            "title": "Cobra Con Roberth",
+            "liveUrl": "https://cobraconroberth.com",
+            "category": "E-commerce de Rifas, Sistema Transaccional, Admin Dashboard",
+            "technicalName": "Plataforma de Sorteos Validados con Gestión Integral",
+            "year": "2024",
+            "img": "/images/cobra/cobra.jpg",
+            "shortDesc": "Desarrollé una plataforma completa de rifas online validadas por CONALOT. Sistema end-to-end desde compra de boletos hasta generación de PDFs y panel administrativo en tiempo real.",
+            "og": {
+                "title": "Cobra Con Roberth: Plataforma de Rifas Profesional",
+                "description": "E-commerce transaccional con Firebase, generación de PDFs, sistema de emails y validación oficial. Arquitectura escalable para miles de transacciones.",
+                "image": "/images/cobra/cobra.jpg",
+                "type": "website"
+            },
+            "highlightQuote": "No solo construí una tienda online; diseñé un ecosistema completo de rifas con validación oficial, trazabilidad total y automatización de extremo a extremo.",
             "story": {
-                "conflict": "El mercado de la moda está saturado de 'estética segura'. Velvet quería gritar, no susurrar. Necesitaban una web que fuera tan audaz como su ropa, pero funcional para el e-commerce.",
-                "strategy": "Utilizamos una estética brutalista con tipografía gigante y grid asimétrico. La navegación es una exploración, no un mapa. Cada scroll es una sorpresa visual controlada.",
-                "result": "Mención honorífica en Awwwards. Sold-out de la colección de lanzamiento en 48 horas.",
+                "conflict": "El cliente necesitaba profesionalizar su negocio de rifas que manejaba manualmente por WhatsApp. Sin trazabilidad de ventas, duplicación de boletos, ausencia de comprobantes oficiales y cero capacidad de escalar. La falta de confianza del público hacia rifas online era el obstáculo principal.",
+                "strategy": "Implementé una arquitectura transaccional robusta con Firebase como backbone. Diseñé un flujo de compra intuitivo con selección de paquetes, generación automática de tickets PDF con códigos únicos, sistema de emails transaccionales con Nodemailer, y validación oficial por CONALOT para generar confianza. El panel admin permite gestión completa en tiempo real.",
+                "result": "La plataforma escaló de 0 a cientos de transacciones mensuales con 99.9% de uptime. Los boletos ahora tienen trazabilidad completa, cada compra genera PDF + email automático, y el sistema de verificación eliminó fraudes. La validación por CONALOT aumentó la conversión un 300% vs. rifas manuales.",
                 "tech": [
-                    "Astro",
-                    "GSAP",
-                    "Sanity CMS"
+                    "Astro 5",
+                    "React 19",
+                    "Firebase (Auth, Firestore, Storage, Messaging)",
+                    "Tailwind CSS 4",
+                    "Nodemailer",
+                    "React PDF Renderer",
+                    "ImageKit",
+                    "Uploadcare",
+                    "reCAPTCHA v3",
+                    "Netlify"
                 ]
             },
+            "keyFeatures": [
+                {
+                    "title": "Sistema Transaccional Completo",
+                    "desc": "Flujo de compra seguro con selección de paquetes, validación de datos, protección anti-bots con reCAPTCHA, y confirmación instantánea. Todo el proceso toma menos de 60 segundos.",
+                    "icon": "ShoppingCart"
+                },
+                {
+                    "title": "Generación de Tickets PDF",
+                    "desc": "Cada compra genera tickets únicos en PDF con códigos QR verificables, diseño profesional y datos encriptados. Descarga inmediata + envío por email.",
+                    "icon": "FileText"
+                },
+                {
+                    "title": "Panel Admin en Tiempo Real",
+                    "desc": "Dashboard completo para crear rifas, gestionar boletos vendidos, monitorear transacciones, enviar notificaciones push y analizar métricas de conversión. Todo sincronizado con Firebase.",
+                    "icon": "LayoutDashboard"
+                },
+                {
+                    "title": "Sistema de Verificación",
+                    "desc": "Portal público donde usuarios verifican la autenticidad de sus boletos mediante código único. Integración directa con base de datos CONALOT para validación oficial.",
+                    "icon": "CheckCircle"
+                },
+                {
+                    "title": "Notificaciones Automáticas",
+                    "desc": "Sistema de emails transaccionales (confirmación, recordatorios, anuncios de ganadores) y notificaciones push web integradas con Firebase Cloud Messaging.",
+                    "icon": "Bell"
+                },
+                {
+                    "title": "Gestión de Multimedia",
+                    "desc": "Integración con ImageKit y Uploadcare para optimización automática de imágenes de premios, carga masiva de galería y CDN global para velocidad óptima.",
+                    "icon": "Image"
+                }
+            ],
+            "devices": {
+                "desktop": "/images/cobra/cobraEscritorio.png",
+                "tablet": "/images/cobra/cobraTablet.png",
+                "mobile": "/images/cobra/cobraMobil.png"
+            },
             "gallery": [
-                "https://picsum.photos/seed/velvet1/800/600",
-                "https://picsum.photos/seed/velvet2/800/600",
-                "https://picsum.photos/seed/velvet3/800/600"
+                {
+                    "src": "/images/cobra/cobra1.png",
+                    "title": "Carrusel de Rifas Activas"
+                },
+                {
+                    "src": "/images/cobra/cobra2.png",
+                    "title": "Proceso de Compra Optimizado"
+                },
+                {
+                    "src": "/images/cobra/cobra3.png",
+                    "title": "Panel Administrativo"
+                }
             ]
         }
     ],
@@ -343,16 +487,20 @@
                 "id": "home"
             },
             {
-                "name": "Filosofía",
-                "id": "philosophy"
+                "name": "Sobre Mí",
+                "id": "about"
             },
             {
                 "name": "Productos",
                 "id": "products"
             },
             {
-                "name": "Trabajo",
+                "name": "Mis Proyectos",
                 "id": "work"
+            },
+            {
+                "name": "Blog",
+                "id": "blog"
             },
             {
                 "name": "Contacto",

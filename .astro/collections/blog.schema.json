@@ -1,0 +1,121 @@
+{
+  "$ref": "#/definitions/blog",
+  "definitions": {
+    "blog": {
+      "type": "object",
+      "properties": {
+        "technicalName": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string",
+          "enum": [
+            "Desarrollo Web",
+            "Negocios Digitales",
+            "Automatización",
+            "IA & Machine Learning",
+            "Opinión",
+            "Diseño"
+          ]
+        },
+        "year": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string"
+        },
+        "img": {
+          "type": "string"
+        },
+        "shortDesc": {
+          "type": "string"
+        },
+        "highlightQuote": {
+          "type": "string"
+        },
+        "story": {
+          "type": "object",
+          "properties": {
+            "conflict": {
+              "type": "string"
+            },
+            "strategy": {
+              "type": "string"
+            },
+            "result": {
+              "type": "string"
+            },
+            "tech": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "conflict",
+            "strategy",
+            "result"
+          ],
+          "additionalProperties": false
+        },
+        "techStack": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stats": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "label",
+              "value"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "pubDate": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "integer",
+              "format": "unix-time"
+            }
+          ]
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "technicalName",
+        "category",
+        "year",
+        "img",
+        "shortDesc",
+        "highlightQuote",
+        "story",
+        "techStack"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#"
+}

@@ -1,0 +1,130 @@
+---
+import { getCollection } from "astro:content";
+import "../../styles/global.css";
+
+// 1. Generate Static Paths for all posts
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+// 2. Get prop for the specific post
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<html lang="es" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>{entry.data.technicalName} | Alfredo Mendoza</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body
+        class="bg-stone-50 text-stone-900 antialiased selection:bg-terracotta selection:text-white"
+    >
+        <main class="max-w-4xl mx-auto px-6 py-20">
+            <!-- Back Link -->
+            <a
+                href="/blog"
+                class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-stone-500 hover:text-terracotta mb-10 transition-colors"
+            >
+                ← Volver al Blog
+            </a>
+
+            <!-- Header -->
+            <header class="mb-16">
+                <div
+                    class="flex items-center gap-4 text-xs font-mono uppercase tracking-widest text-terracotta mb-4"
+                >
+                    <span>{entry.data.category}</span>
+                    <span class="w-px h-3 bg-stone-300"></span>
+                    <span>{entry.data.year}</span>
+                </div>
+                <h1
+                    class="text-4xl md:text-6xl font-serif font-bold leading-tight mb-8"
+                >
+                    {entry.data.technicalName}
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-stone-500 font-light leading-relaxed border-l-4 border-terracotta pl-6"
+                >
+                    {entry.data.highlightQuote}
+                </p>
+            </header>
+
+            <!-- Main Image -->
+            <div
+                class="aspect-video w-full overflow-hidden rounded-2xl mb-16 shadow-2xl"
+            >
+                <img
+                    src={entry.data.img}
+                    alt={entry.data.technicalName}
+                    class="w-full h-full object-cover"
+                />
+            </div>
+
+            <!-- Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-[1fr_250px] gap-12">
+                <!-- Markdown Content -->
+                <article
+                    class="prose prose-stone prose-lg prose-headings:font-serif prose-headings:font-bold prose-a:text-terracotta hover:prose-a:text-terracotta/80"
+                >
+                    <Content />
+                </article>
+
+                <!-- Sidebar Info -->
+                <aside class="space-y-10">
+                    <!-- Stack -->
+                    <div>
+                        <h3
+                            class="text-sm font-bold uppercase tracking-widest mb-4 border-b border-stone-200 pb-2"
+                        >
+                            Tech Stack
+                        </h3>
+                        <div class="flex flex-wrap gap-2">
+                            {
+                                entry.data.techStack.map((tech) => (
+                                    <span class="px-3 py-1 bg-stone-200 text-stone-700 text-xs font-mono rounded-full">
+                                        {tech}
+                                    </span>
+                                ))
+                            }
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    {
+                        entry.data.stats && (
+                            <div>
+                                <h3 class="text-sm font-bold uppercase tracking-widest mb-4 border-b border-stone-200 pb-2">
+                                    Resultados
+                                </h3>
+                                <div class="space-y-4">
+                                    {entry.data.stats.map((stat) => (
+                                        <div>
+                                            <span class="block text-2xl font-serif font-bold text-terracotta">
+                                                {stat.value}
+                                            </span>
+                                            <span class="block text-xs uppercase text-stone-500">
+                                                {stat.label}
+                                            </span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                    }
+                </aside>
+            </div>
+        </main>
+    </body>
+</html>

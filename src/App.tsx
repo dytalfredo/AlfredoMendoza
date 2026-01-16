@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect, useLayoutEffect } from 'react';
 import './styles/global.css';
-import { HashRouter, Routes, Route, Link as RouterLink, useParams, useLocation } from 'react-router-dom';
+import * as ReactRouterDOM from 'react-router-dom';
+const RouterNamespace = (ReactRouterDOM as any).default ?? ReactRouterDOM;
+const { BrowserRouter, Routes, Route, Link: RouterLink, useParams, useLocation } = RouterNamespace;
 import { motion, useScroll, useTransform, Variants, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -11,10 +13,13 @@ import AdminPanel from './components/AdminPanel';
 import LoadingScreen from './components/LoadingScreen';
 import FloatingActions from './components/FloatingActions';
 import ContactModal from './components/ContactModal';
+import ContactFormPage from './components/ContactFormPage';
+import Footer from './components/Footer';
 
 
 // Import Data
 import contentData from './data/content.json';
+import { imageCache, extractImageUrls } from './utils/imageCache';
 
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
@@ -147,123 +152,123 @@ const Hero = () => {
 
 // 2. Philosophy Section: Fixed Center Slideshow
 // Items appear and disappear in the EXACT SAME SPOT. No vertical movement.
-const Philosophy = () => {
-    const sectionRef = useRef<HTMLDivElement>(null);
-    const { principles, sectionId } = contentData.philosophy;
-
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: sectionRef.current,
-                    start: "top top",
-                    end: "+=2500", // Controls speed of sequence
-                    scrub: 0.5,
-                    pin: true,
-                }
-            });
-
-            // Ensure clean starting state for all items
-            principles.forEach((_, i) => {
-                gsap.set(`.phil-item-${i}`, { autoAlpha: 0, scale: 0.95 });
-                gsap.set(`.phil-bg-${i}`, { opacity: 0 });
-                gsap.set(`.phil-line-horiz-${i}`, { width: 0 });
-            });
-
-            principles.forEach((_, i) => {
-                const isLast = i === principles.length - 1;
-
-                // --- ENTER PHASE ---
-                // We use fromTo to guarantee the start state in the timeline flow
-                tl.to(`.phil-item-${i}`, {
-                    autoAlpha: 1,
-                    filter: "blur(0px)",
-                    scale: 1,
-                    duration: 0.5,
-                    ease: "power2.out"
-                })
-                    .to(`.phil-bg-${i}`, { opacity: 1, duration: 1 }, "<")
-                    .to(`.phil-line-horiz-${i}`, { width: 100, duration: 0.5 }, "<");
-
-                // 2. Hold reading time (Static phase)
-                tl.to({}, { duration: 1.5 });
-
-                // --- EXIT PHASE (Strictly sequential: Fade out BEFORE next loop starts) ---
-                if (!isLast) {
-                    tl.to(`.phil-item-${i}`, {
-                        autoAlpha: 0,
-                        filter: "blur(10px)",
-                        scale: 0.95,
-                        duration: 0.5,
-                        ease: "power2.in"
-                    })
-                        .to(`.phil-bg-${i}`, { opacity: 0, duration: 0.5 }, "<")
-                        .set(`.phil-line-horiz-${i}`, { width: 0 }); // Reset line
-
-                    // Add a tiny buffer to ensure strict invisibility before next frame
-                    tl.to({}, { duration: 0.1 });
-                }
-            });
-
-        }, sectionRef);
-        return () => ctx.revert();
-    }, []);
+// 2. About Section: Who Am I
+const About = () => {
+    const { about } = contentData;
 
     return (
-        <section ref={sectionRef} id="philosophy" className="relative h-screen w-full bg-stone-900 overflow-hidden text-stone-100 flex items-center justify-center">
-            {/* Background Images Layer (Absolute Full Screen) */}
-            {principles.map((p, i) => (
-                <div
-                    key={`bg-${i}`}
-                    className={`phil-bg-${i} absolute inset-0 bg-cover bg-center transition-opacity opacity-0 pointer-events-none`}
-                    style={{ backgroundImage: `url(${p.img})` }}
+        <section id="about" className="min-h-screen w-full bg-stone-900 text-stone-100 flex items-center justify-center py-20 px-6 md:px-20 overflow-hidden">
+            <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center">
+
+                {/* Image Side with Tech Stack Orbit */}
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    animate={{ y: [0, -10, 0] }} // Breathing animation
+                    transition={{
+                        duration: 0.8, // Entrance duration
+                        y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 } // Floating duration
+                    }}
+                    viewport={{ once: true }}
+                    className="relative w-full aspect-[3/4] md:aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl group"
                 >
-                    <div className="absolute inset-0 bg-black/40"></div>
-                </div>
-            ))}
+                    <div className="absolute inset-0 bg-gradient-to-t from-stone-900 via-transparent to-transparent opacity-60 z-10"></div>
+                    <img src={about.image} alt="Retrato profesional de Alfredo Mendoza, Arquitecto Digital" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
 
-            {/* Static Anchor Lines - Fixed position relative to container */}
-            <div className="absolute left-6 md:left-20 top-0 bottom-0 w-px bg-stone-800 hidden md:block z-10">
-                <div className="absolute top-1/2 -translate-y-1/2 w-1 h-20 bg-terracotta/20"></div>
-            </div>
-
-            {/* Content Container - Items overlap perfectly here */}
-            <div className="relative z-20 w-full max-w-6xl px-6 md:px-20 h-full">
-
-                {principles.map((p, i) => (
-                    <div
-                        key={i}
-                        // ABSOLUTE INSET-0 ensures they occupy full screen and stack on top of each other exactly
-                        // Flexbox inside handles centering the text content
-                        className={`phil-item-${i} absolute inset-0 w-full h-full flex flex-col md:flex-row items-center justify-center md:justify-start gap-8 opacity-0 blur-sm scale-95 will-change-transform pointer-events-none`}
-                    >
-                        {/* Number & Connecting Line */}
-                        <div className="hidden md:flex items-center gap-6 min-w-[150px]">
-                            <span className="font-mono text-xl text-stone-500">0{i + 1}</span>
-                            {/* The Horizontal Line animating out */}
-                            <div className={`phil-line-horiz-${i} h-[2px] w-0 bg-terracotta`}></div>
-                        </div>
-
-                        {/* Text Content */}
-                        <div className="max-w-3xl text-center md:text-left px-8 py-10 bg-black/60 backdrop-blur-md rounded-xl border border-white/10 shadow-2xl">
-                            <p className="text-terracotta text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4">
-                                {p.subtitle}
-                            </p>
-                            <h3 className="text-4xl sm:text-6xl md:text-8xl font-serif font-bold italic mb-6 leading-none text-white">
-                                {p.title}
-                            </h3>
-                            <div className="w-10 h-1 bg-stone-700 mx-auto md:mx-0 mb-6"></div>
-                            <p className="text-lg md:text-3xl font-light leading-relaxed text-stone-400">
-                                {p.desc}
-                            </p>
-                        </div>
+                    {/* Tech Stack Floating Tags - Vertical Right Stack */}
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col items-end gap-3 z-20">
+                        {about.techStack && about.techStack.map((tech: string, i: number) => (
+                            <motion.span
+                                key={i}
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.5 + (i * 0.1) }}
+                                viewport={{ once: true }}
+                                className="px-3 py-1 text-[10px] md:text-xs font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md border border-white/10 rounded-full text-terracotta shadow-lg hover:bg-terracotta hover:text-black transition-colors cursor-default"
+                            >
+                                {tech}
+                            </motion.span>
+                        ))}
                     </div>
-                ))}
-            </div>
 
-            <div className="absolute bottom-10 right-10 flex flex-col items-end gap-2 text-stone-600 animate-pulse">
-                <span className="text-xs font-mono uppercase">Scroll Flow</span>
-                <div className="w-px h-10 bg-stone-600"></div>
+                    {/* Principles Overlay - Glass/Gradient Card */}
+                    {about.principles && (
+                        <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black via-black/80 to-transparent z-30 flex flex-col gap-4">
+                            {about.principles.map((principle: any, idx: number) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: 0.8 + (idx * 0.1) }}
+                                    viewport={{ once: true }}
+                                    className="border-l-2 border-terracotta pl-3"
+                                >
+                                    <h4 className="text-white font-serif text-lg italic leading-tight mb-1">{principle.title}</h4>
+                                    <p className="text-stone-400 text-[10px] leading-tight max-w-[90%]">{principle.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
+                    )}
+                </motion.div>
+
+                {/* Content Side */}
+                <div className="flex flex-col justify-center space-y-8">
+                    <motion.span
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 0.2 }}
+                        viewport={{ once: true }}
+                        className="text-terracotta text-sm font-bold uppercase tracking-[0.3em]"
+                    >
+                        {about.title}
+                    </motion.span>
+
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3 }}
+                        viewport={{ once: true }}
+                        className="text-4xl md:text-6xl font-serif font-bold leading-tight"
+                    >
+                        {about.headline}
+                    </motion.h2>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 0.4 }}
+                        viewport={{ once: true }}
+                        className="text-stone-400 text-lg md:text-xl font-light leading-relaxed whitespace-pre-line"
+                    >
+                        {about.description}
+                    </motion.div>
+
+                    {/* Stats Grid */}
+                    {about.stats && (
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5 }}
+                            viewport={{ once: true }}
+                            className="grid grid-cols-3 gap-6 pt-8 border-t border-stone-800"
+                        >
+                            {about.stats.map((stat, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.6 + (idx * 0.1) }}
+                                    viewport={{ once: true }}
+                                >
+                                    <span className="block text-2xl md:text-4xl font-serif font-bold text-terracotta mb-1">{stat.value}</span>
+                                    <span className="block text-xs uppercase tracking-widest text-stone-500">{stat.label}</span>
+                                </motion.div>
+                            ))}
+                        </motion.div>
+                    )}
+
+
+                </div>
             </div>
         </section>
     );
@@ -300,25 +305,24 @@ const Industries = () => {
                     // Update Counter
                     .to(`.industry-count`, { innerText: i + 1, snap: { innerText: 1 } }, "<");
 
-                // 2. Enter Description (Sequence after Name)
-                tl.fromTo(`.industry-desc-${i}`,
+                // 2. Enter Examples (Staggered Sequence after Name)
+                tl.fromTo(`.industry-ex-${i}`,
                     { y: 20, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" },
+                    { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "back.out(1.7)" },
                     "-=0.5"
                 );
 
                 // 3. Hold phase (Allow user to read)
-                tl.to({}, { duration: 2 });
+                tl.to({}, { duration: 2.5 });
 
                 // 4. Exit Text (if not last)
                 if (!isLast) {
-                    // We append these to the END of the timeline sequence for this item.
                     tl.to(`.industry-title-${i}`,
                         { y: -50, opacity: 0, filter: "blur(5px)", duration: 0.8, ease: "power3.in" }
                     )
-                        .to(`.industry-desc-${i}`,
-                            { y: -20, opacity: 0, duration: 0.8, ease: "power3.in" },
-                            "<" // Sync desc exit exactly with title exit
+                        .to(`.industry-ex-${i}`,
+                            { y: -20, opacity: 0, duration: 0.4, stagger: 0.05, ease: "power3.in" },
+                            "<"
                         );
                 }
             });
@@ -337,20 +341,28 @@ const Industries = () => {
                     {title}
                 </p>
 
-                {/* Container for text elements to overlap perfectly */}
-                <div className="relative w-full max-w-5xl h-[40vh] flex flex-col items-center justify-center">
+                {/* Container for elements to overlap perfectly */}
+                <div className="relative w-full max-w-6xl h-[50vh] flex flex-col items-center justify-center">
                     {items.map((item, i) => (
                         <div key={i} className="absolute inset-0 flex flex-col items-center justify-center">
                             <h2
-                                className={`industry-title-${i} text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-serif font-bold italic leading-none whitespace-nowrap opacity-0`}
+                                className={`industry-title-${i} text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-serif font-bold italic leading-none whitespace-nowrap opacity-0 mb-12`}
                             >
                                 {item.label}
                             </h2>
-                            <p
-                                className={`industry-desc-${i} mt-4 sm:mt-6 md:mt-10 text-base sm:text-lg md:text-2xl font-sans font-light max-w-xs sm:max-w-2xl text-center opacity-0 leading-relaxed text-stone-300`}
-                            >
-                                {item.desc}
-                            </p>
+
+                            {/* Animated Examples List */}
+                            <div className="flex flex-wrap justify-center gap-4 max-w-4xl">
+                                {item.examples && item.examples.map((ex: string, idx: number) => (
+                                    <div
+                                        key={idx}
+                                        className={`industry-ex-${i} opacity-0 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20 text-sm md:text-base font-medium text-stone-200 shadow-xl flex items-center gap-3`}
+                                    >
+                                        <div className="w-2 h-2 rounded-full bg-terracotta shadow-[0_0_10px_rgba(255,100,0,0.5)]"></div>
+                                        {ex}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </div>
@@ -364,99 +376,250 @@ const Industries = () => {
     );
 };
 
-// 3. Testimonials Section (Improved with Container Query style logic)
-const Testimonials = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const wrapperRef = useRef<HTMLDivElement>(null);
-    const { testimonials } = contentData;
-
-    useLayoutEffect(() => {
-        const ctx = gsap.context(() => {
-            // Horizontal Scroll Logic
-            gsap.to(wrapperRef.current, {
-                x: () => `-${(testimonials.reviews.length - 1) * 85}vw`,
-                ease: "none",
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    pin: true,
-                    scrub: 1,
-                    snap: 1 / (testimonials.reviews.length - 1),
-                    // Increase the scroll distance (duration) to allow sufficient time to read all cards
-                    // Multiplying offsetWidth gives a "slower" feel (more vertical pixels per horizontal pixel)
-                    end: () => `+=${wrapperRef.current ? wrapperRef.current.offsetWidth * 2.5 : 4000}`
-                }
-            });
-
-            // Parallax text
-            gsap.to(".parallax-bg-text", {
-                x: -400,
-                scrollTrigger: {
-                    trigger: containerRef.current,
-                    scrub: 1,
-                    start: "top top",
-                    end: "bottom top"
-                }
-            });
-        }, containerRef);
-        return () => ctx.revert();
-    }, [testimonials.reviews.length]);
-
+// 3. Call to Action Section
+const CallToAction = () => {
     return (
-        <section id="testimonials" ref={containerRef} className="relative h-screen bg-stone-200 overflow-hidden flex items-center">
+        <section id="cta" className="relative h-screen bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 overflow-hidden flex items-center justify-center">
+            {/* Noise Overlay */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] z-0"></div>
 
-            {/* Container Query Style Injection */}
-            <style>{`
-        .testimonial-card-container {
-            container-type: inline-size;
-        }
-        @container (max-width: 500px) {
-            .quote-text { font-size: 1.25rem; line-height: 1.3; }
-        }
-        @container (min-width: 501px) {
-            .quote-text { font-size: 2.5rem; line-height: 1.1; }
-        }
-      `}</style>
+            {/* Background Animated Circles */}
+            <motion.div
+                animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.03, 0.05, 0.03]
+                }}
+                transition={{
+                    duration: 8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="absolute w-[500px] h-[500px] rounded-full bg-terracotta blur-3xl"
+                style={{ top: '10%', left: '15%' }}
+            />
+            <motion.div
+                animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.03, 0.06, 0.03]
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                }}
+                className="absolute w-[600px] h-[600px] rounded-full bg-white blur-3xl"
+                style={{ bottom: '10%', right: '10%' }}
+            />
 
-            {/* Background Text Layer */}
-            <div className="absolute top-1/2 -translate-y-1/2 w-full z-0 pointer-events-none select-none">
-                <div className="parallax-bg-text whitespace-nowrap text-[25vw] font-serif font-bold text-stone-300 opacity-50 ml-20">
-                    {testimonials.bgText}
-                </div>
-            </div>
+            {/* Content */}
+            <div className="relative z-10 text-center px-6 max-w-5xl">
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-terracotta text-sm md:text-base font-bold uppercase tracking-[0.3em] mb-8"
+                >
+                    Es momento de actuar
+                </motion.p>
 
-            {/* Intro Text */}
-            <div className="absolute left-6 md:left-20 top-1/2 -translate-y-1/2 z-10 w-[25vw]">
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-serif text-stone-900 leading-tight">
-                    {testimonials.title.split('\n')[0]} <br /> {testimonials.title.split('\n')[1].replace(testimonials.italicWord, '')} <span className="text-terracotta italic">{testimonials.italicWord}</span>.
-                </h2>
-                <p className="mt-4 text-xs sm:text-sm text-stone-500 font-sans">{testimonials.subtitle}</p>
-            </div>
+                <motion.h2
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight mb-12"
+                >
+                    ¿Alguna de estas industrias <br className="hidden md:block" />
+                    te <span className="text-terracotta italic">resuenan?</span>
+                </motion.h2>
 
-            {/* Sliding Wrapper */}
-            <div ref={wrapperRef} className="flex pl-[40vw] gap-6 md:gap-20 z-10 items-center will-change-transform h-full">
-                {testimonials.reviews.map((r) => (
-                    <div
-                        key={r.id}
-                        // Removed strict fixed height to avoid overflow, used min-h and flex
-                        className="testimonial-card-container w-[80vw] md:w-[60vw] min-h-[40vh] h-auto max-h-[70vh] bg-stone-900 text-stone-50 p-6 md:p-14 flex flex-col justify-between shrink-0 hover:scale-[1.01] transition-transform duration-500 shadow-2xl rounded-2xl border border-stone-800"
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                >
+                    <a
+                        href="/contacto"
+                        className="group relative inline-flex items-center justify-center gap-4 px-12 py-6 bg-white text-stone-900 rounded-full font-sans font-bold text-lg md:text-2xl uppercase tracking-widest shadow-2xl hover:shadow-terracotta/20 transition-all duration-500 overflow-hidden"
                     >
-                        <div className="text-terracotta text-5xl md:text-8xl font-serif leading-none mb-4">“</div>
+                        {/* Background Animation */}
+                        <motion.div
+                            className="absolute inset-0 bg-terracotta"
+                            initial={{ x: '-100%' }}
+                            whileHover={{ x: 0 }}
+                            transition={{ duration: 0.4 }}
+                        />
 
-                        <div className="flex-1 flex items-center my-4 md:my-6">
-                            <p className="quote-text font-light leading-tight">
-                                {r.quote}
-                            </p>
-                        </div>
+                        <span className="relative z-10 group-hover:text-white transition-colors duration-400">
+                            Charlemos
+                        </span>
 
-                        <div className="border-t border-stone-700 pt-4 md:pt-6 flex justify-between items-end">
-                            <div>
-                                <p className="font-bold text-base md:text-2xl uppercase tracking-wider">{r.author}</p>
-                                <p className="text-stone-500 text-xs md:text-sm">{r.role}</p>
+                        <motion.div
+                            animate={{ x: [0, 5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                            className="relative z-10"
+                        >
+                            <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8 group-hover:text-white transition-colors" />
+                        </motion.div>
+                    </a>
+                </motion.div>
+
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    className="mt-10 text-sm md:text-base text-stone-400 font-light"
+                >
+                    Ningún compromiso. Solo una conversación honesta sobre cómo multiplicar tu negocio.
+                </motion.p>
+            </div>
+        </section>
+    );
+};
+
+// 3.1 Digital Sovereignty Section
+const DigitalSovereignty = () => {
+    return (
+        <section className="relative bg-stone-50 py-24 md:py-32 overflow-hidden">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-terracotta via-transparent to-transparent"></div>
+            </div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-20">
+                {/* Header */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="text-center mb-16 md:mb-20"
+                >
+                    <p className="text-terracotta text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-4">
+                        Ventaja Local
+                    </p>
+                    <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-stone-900 leading-tight mb-6">
+                        Soberanía <span className="text-terracotta italic">Digital</span>
+                    </h2>
+                    <p className="text-lg md:text-xl text-stone-600 max-w-3xl mx-auto font-light">
+                        Tecnología de clase mundial sin la complejidad cambiaria.
+                    </p>
+                </motion.div>
+
+                {/* Content Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+                    {/* Left: The Problem */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="bg-gradient-to-br from-stone-900 to-stone-800 text-white p-8 md:p-10 rounded-2xl border border-white/10 relative overflow-hidden">
+                            {/* Decorative element */}
+                            <div className="absolute -top-10 -right-10 w-40 h-40 bg-terracotta/10 rounded-full blur-3xl"></div>
+
+                            <div className="relative z-10">
+                                <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6 flex items-center gap-3">
+                                    <span className="text-3xl">⚠️</span>
+                                    La Realidad Cambiaria
+                                </h3>
+                                <div className="space-y-4 text-stone-300 leading-relaxed">
+                                    <p>
+                                        <strong className="text-white">El problema:</strong> Pagar en dólares por servicios digitales importados implica:
+                                    </p>
+                                    <ul className="space-y-3 ml-4">
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1">•</span>
+                                            <span>Volatilidad cambiaria que dispara costos de un día para otro</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1">•</span>
+                                            <span>Inflación galopante que devalúa tu inversión en tiempo real</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1">•</span>
+                                            <span>Comisiones bancarias múltiples y tipos de cambio desfavorables</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1">•</span>
+                                            <span>Dependencia de plataformas extranjeras con soporte en inglés</span>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div className="text-[10px] md:text-xs text-stone-600 font-mono border border-stone-700 px-2 py-1 rounded">{r.tag}</div>
                         </div>
+                    </motion.div>
+
+                    {/* Right: The Solution */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                    >
+                        <div className="bg-white p-8 md:p-10 rounded-2xl border-2 border-terracotta/20 shadow-xl relative overflow-hidden">
+                            {/* Decorative element */}
+                            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-terracotta/5 rounded-full blur-3xl"></div>
+
+                            <div className="relative z-10">
+                                <h3 className="text-2xl md:text-3xl font-serif font-bold mb-6 flex items-center gap-3 text-stone-900">
+                                    <span className="text-3xl">✅</span>
+                                    La Ventaja Local
+                                </h3>
+                                <div className="space-y-4 text-stone-700 leading-relaxed">
+                                    <p>
+                                        <strong className="text-stone-900">Mi propuesta:</strong> Trabajo en bolívares, con empresas venezolanas que entienden el mercado local:
+                                    </p>
+                                    <ul className="space-y-3 ml-4">
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1 text-xl">💰</span>
+                                            <span><strong>Sin riesgo cambiario.</strong> Presupuestos y pagos en moneda local estables</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1 text-xl">📍</span>
+                                            <span><strong>Zona horaria Venezuela.</strong> Reuniones en horario laboral, sin desajustes</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1 text-xl">🤝</span>
+                                            <span><strong>Soporte en español.</strong> Comunicación directa sin intermediarios</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1 text-xl">🇻🇪</span>
+                                            <span><strong>Entiendo tu realidad.</strong> Conozco las restricciones, oportunidades y necesidades del mercado venezolano</span>
+                                        </li>
+                                        <li className="flex items-start gap-3">
+                                            <span className="text-terracotta mt-1 text-xl">⚡</span>
+                                            <span><strong>Tecnología internacional.</strong> Calidad global a precios justos para el contexto local</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </div>
+
+                {/* Bottom CTA */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="mt-16 text-center"
+                >
+                    <div className="inline-block bg-stone-100 px-8 py-6 rounded-xl border border-stone-200">
+                        <p className="text-stone-900 text-lg md:text-xl font-serif mb-2">
+                            <span className="font-bold">Tu inversión protegida.</span> Tu proyecto escalable.
+                        </p>
+                        <p className="text-stone-600 text-sm md:text-base">
+                            Desarrollo de clase mundial sin expatriar capital.
+                        </p>
                     </div>
-                ))}
+                </motion.div>
             </div>
         </section>
     );
@@ -685,9 +848,9 @@ const Work = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="text-sm font-sans uppercase tracking-widest mb-10 md:mb-20 border-b border-stone-200 pb-4"
+                className="text-5xl md:text-8xl font-serif font-bold text-stone-900 mb-20 text-center"
             >
-                Trabajos Selectos
+                Mis Proyectos
             </motion.h2>
 
             <div className="flex flex-col gap-16 md:gap-32">
@@ -801,6 +964,47 @@ const CaseStudy = ({ onOpenContact }: { onOpenContact: () => void }) => {
         }
     };
 
+    // Update meta tags for OpenGraph when project loads
+    useEffect(() => {
+        if (project && project.og) {
+            // Update title
+            document.title = `${project.og.title} | Alfredo Mendoza`;
+
+            // Helper function to set or update meta tag
+            const setMetaTag = (property: string, content: string, isName = false) => {
+                const attr = isName ? 'name' : 'property';
+                let meta = document.querySelector(`meta[${attr}="${property}"]`);
+                if (!meta) {
+                    meta = document.createElement('meta');
+                    meta.setAttribute(attr, property);
+                    document.head.appendChild(meta);
+                }
+                meta.setAttribute('content', content);
+            };
+
+            // OpenGraph tags
+            setMetaTag('og:title', project.og.title);
+            setMetaTag('og:description', project.og.description);
+            setMetaTag('og:image', window.location.origin + project.og.image);
+            setMetaTag('og:type', project.og.type);
+            setMetaTag('og:url', window.location.href);
+
+            // Twitter Card tags
+            setMetaTag('twitter:card', 'summary_large_image', true);
+            setMetaTag('twitter:title', project.og.title, true);
+            setMetaTag('twitter:description', project.og.description, true);
+            setMetaTag('twitter:image', window.location.origin + project.og.image, true);
+
+            // Standard meta description
+            setMetaTag('description', project.og.description, true);
+        }
+
+        // Cleanup function to reset to default meta tags
+        return () => {
+            document.title = 'Alfredo Mendoza | Arquitecto Digital & Desarrollador Full Stack';
+        };
+    }, [project]);
+
     if (!project) return <div className="h-screen flex items-center justify-center text-4xl font-serif">Proyecto no encontrado.</div>;
 
     return (
@@ -812,7 +1016,7 @@ const CaseStudy = ({ onOpenContact }: { onOpenContact: () => void }) => {
         >
             {/* Nav Back */}
             <div className="absolute top-24 left-6 md:left-10 z-40 mix-blend-difference text-white">
-                <RouterLink to="/" className="flex items-center gap-2 hover:opacity-70 transition-opacity">
+                <RouterLink to="/" state={{ scrollTo: 'work' }} className="flex items-center gap-2 hover:opacity-70 transition-opacity">
                     <ArrowLeft size={20} />
                     <span className="uppercase text-xs tracking-widest hidden md:inline">Volver</span>
                 </RouterLink>
@@ -1189,7 +1393,7 @@ const CaseStudy = ({ onOpenContact }: { onOpenContact: () => void }) => {
                     {/* New Project (Contact) */}
                     <button
                         onClick={onOpenContact}
-                        className="group p-10 bg-stone-100 rounded-2xl hover:bg-stone-900 transition-colors text-left relative overflow-hidden"
+                        className="group p-10 bg-stone-100 rounded-2xl hover:bg-stone-900 transition-all duration-500 ease-in-out text-left relative overflow-hidden"
                     >
                         <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
                             <Ticket size={100} className="text-stone-500 group-hover:text-white" />
@@ -1210,7 +1414,7 @@ const CaseStudy = ({ onOpenContact }: { onOpenContact: () => void }) => {
                         return (
                             <RouterLink
                                 to={`/work/${nextProject.id}`}
-                                className="group p-10 bg-stone-100 rounded-2xl hover:bg-terracotta transition-colors text-left relative overflow-hidden"
+                                className="group p-10 bg-stone-100 rounded-2xl hover:bg-terracotta transition-all duration-500 ease-in-out text-left relative overflow-hidden"
                                 onClick={() => window.scrollTo(0, 0)}
                             >
                                 <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -1230,7 +1434,7 @@ const CaseStudy = ({ onOpenContact }: { onOpenContact: () => void }) => {
 
                 {/* Footer Navigation: Back & Scroll Top */}
                 <div className="flex justify-between items-center border-t border-stone-100 pt-10">
-                    <RouterLink to="/" className="flex items-center gap-2 text-stone-400 hover:text-stone-900 transition-colors uppercase text-xs tracking-widest font-bold">
+                    <RouterLink to="/" state={{ scrollTo: 'work' }} className="flex items-center gap-2 text-stone-400 hover:text-stone-900 transition-colors uppercase text-xs tracking-widest font-bold">
                         <ArrowLeft size={16} /> Volver al Inicio
                     </RouterLink>
 
@@ -1267,12 +1471,25 @@ const Contact = () => {
 }
 
 const Home = () => {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state && location.state.scrollTo === 'work') {
+            const workSection = document.getElementById('work');
+            if (workSection) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+                // Optional: Clear state to avoid scrolling on refresh (complex with React Router history, maybe not needed for this simple case)
+            }
+        }
+    }, [location]);
+
     return (
         <main className="w-full bg-stone-50">
             <Hero />
-            <Philosophy />
+            <About />
             <Industries />
-            <Testimonials />
+            <CallToAction />
+            <DigitalSovereignty />
             <Products />
             <Work />
             <Contact />
@@ -1284,8 +1501,33 @@ const App: React.FC = () => {
     const [hasEntered, setHasEntered] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
 
+    // Preload critical images on mount
+    useEffect(() => {
+        // Extract all image URLs from content data
+        const allImageUrls = extractImageUrls(contentData);
+
+        // Define critical images (hero, about, first project)
+        const criticalImages = [
+            contentData.about.image,
+            ...projectsData.slice(0, 2).map(p => p.img) // First 2 projects
+        ].filter(Boolean);
+
+        // Define normal priority images
+        const normalImages = allImageUrls.filter(url => !criticalImages.includes(url));
+
+        // Preload with priority
+        imageCache.preloadWithPriority(criticalImages, normalImages);
+
+        // Optional: Log cache stats in development
+        if (import.meta.env.DEV) {
+            setTimeout(() => {
+                console.log('Image Cache Stats:', imageCache.getStats());
+            }, 3000);
+        }
+    }, []);
+
     return (
-        <HashRouter>
+        <BrowserRouter>
             <AnimatePresence mode="wait">
                 {!hasEntered && <LoadingScreen onComplete={() => setHasEntered(true)} />}
             </AnimatePresence>
@@ -1299,11 +1541,14 @@ const App: React.FC = () => {
                 </AnimatePresence>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/contacto" element={<ContactFormPage />} />
                     <Route path="/work/:id" element={<CaseStudy onOpenContact={() => setIsContactOpen(true)} />} />
                     <Route path="/admin" element={<AdminPanel />} />
                 </Routes>
+                {/* 6. Footer */}
+                <Footer />
             </div>
-        </HashRouter>
+        </BrowserRouter>
     );
 };
 

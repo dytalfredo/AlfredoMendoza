@@ -1,6 +1,9 @@
 import React from 'react';
 import { Menu, X, Lock } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import * as ReactRouterDOM from 'react-router-dom';
+// Handle Vite/CJS interop: check if the module has a default export containing the named exports
+const RouterNamespace = (ReactRouterDOM as any).default ?? ReactRouterDOM;
+const { Link, useLocation, useNavigate, BrowserRouter } = RouterNamespace;
 import { motion, AnimatePresence } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
@@ -102,11 +105,17 @@ const Navigation = () => {
                 transition={{ duration: 0.6, type: "spring", bounce: 0.2 }}
                 className="relative z-50 flex items-center justify-center h-[30px]"
             >
-                <button
-                    onClick={() => handleScroll('home')}
+                <a
+                    href={location.pathname !== '/' ? '/' : undefined}
+                    onClick={(e) => {
+                        if (location.pathname === '/') {
+                            e.preventDefault();
+                            handleScroll('home');
+                        }
+                    }}
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
-                    className="flex items-center justify-center min-w-[50px] bg-transparent border-none cursor-pointer"
+                    className="flex items-center justify-center min-w-[50px] bg-transparent border-none cursor-pointer no-underline"
                 >
                     <AnimatePresence mode="wait">
                         {shouldShowLogoText ? (
@@ -133,7 +142,7 @@ const Navigation = () => {
                             </motion.span>
                         )}
                     </AnimatePresence>
-                </button>
+                </a>
             </motion.div>
 
             <AnimatePresence>
@@ -147,17 +156,51 @@ const Navigation = () => {
                     >
                         <div className="hidden md:flex gap-8 items-center">
                             {links.map((link) => (
-                                <a
-                                    key={link.name}
-                                    href={`#${link.id}`}
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        handleScroll(link.id);
-                                    }}
-                                    className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
-                                >
-                                    {link.name}
-                                </a>
+                                link.id === 'blog' ? (
+                                    <a
+                                        key={link.name}
+                                        href="/blog"
+                                        className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
+                                    >
+                                        {link.name}
+                                    </a>
+                                ) : link.id === 'contact' ? (
+                                    <a
+                                        key={link.name}
+                                        href="/contacto"
+                                        className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
+                                    >
+                                        {link.name}
+                                    </a>
+                                ) : link.id === 'home' ? (
+                                    <a
+                                        key={link.name}
+                                        href={location.pathname !== '/' ? '/' : `#${link.id}`}
+                                        onClick={(e) => {
+                                            if (location.pathname === '/') {
+                                                e.preventDefault();
+                                                handleScroll(link.id);
+                                            }
+                                        }}
+                                        className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
+                                    >
+                                        {link.name}
+                                    </a>
+                                ) : (
+                                    <a
+                                        key={link.name}
+                                        href={location.pathname !== '/' ? `/?section=${link.id}` : `#${link.id}`}
+                                        onClick={(e) => {
+                                            if (location.pathname === '/') {
+                                                e.preventDefault();
+                                                handleScroll(link.id);
+                                            }
+                                        }}
+                                        className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
+                                    >
+                                        {link.name}
+                                    </a>
+                                )
                             ))}
                             <Link to="/admin" className="ml-4 opacity-50 hover:opacity-100 transition-opacity">
                                 <Lock size={16} />
@@ -182,18 +225,53 @@ const Navigation = () => {
                         className="fixed inset-0 bg-stone-900 text-stone-50 flex flex-col justify-center items-center gap-8 z-40 md:hidden"
                     >
                         {links.map((link) => (
-                            <a
-                                key={link.name}
-                                href={`#${link.id}`}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setIsOpen(false);
-                                    handleScroll(link.id);
-                                }}
-                                className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
-                            >
-                                {link.name}
-                            </a>
+                            link.id === 'blog' ? (
+                                <a
+                                    key={link.name}
+                                    href="/blog"
+                                    className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
+                                >
+                                    {link.name}
+                                </a>
+                            ) : link.id === 'contact' ? (
+                                <a
+                                    key={link.name}
+                                    href="/contacto"
+                                    className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
+                                >
+                                    {link.name}
+                                </a>
+                            ) : link.id === 'home' ? (
+                                <a
+                                    key={link.name}
+                                    href={location.pathname !== '/' ? '/' : `#${link.id}`}
+                                    onClick={(e) => {
+                                        if (location.pathname === '/') {
+                                            e.preventDefault();
+                                            setIsOpen(false);
+                                            handleScroll(link.id);
+                                        }
+                                    }}
+                                    className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
+                                >
+                                    {link.name}
+                                </a>
+                            ) : (
+                                <a
+                                    key={link.name}
+                                    href={location.pathname !== '/' ? `/?section=${link.id}` : `#${link.id}`}
+                                    onClick={(e) => {
+                                        if (location.pathname === '/') {
+                                            e.preventDefault();
+                                            setIsOpen(false);
+                                            handleScroll(link.id);
+                                        }
+                                    }}
+                                    className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
+                                >
+                                    {link.name}
+                                </a>
+                            )
                         ))}
                         <Link to="/admin" onClick={() => setIsOpen(false)} className="mt-8 text-sm uppercase opacity-50">
                             Área Admin
@@ -202,6 +280,14 @@ const Navigation = () => {
                 )}
             </AnimatePresence>
         </nav>
+    );
+};
+
+export const StandaloneNavigation = () => {
+    return (
+        <BrowserRouter>
+            <Navigation />
+        </BrowserRouter>
     );
 };
 
