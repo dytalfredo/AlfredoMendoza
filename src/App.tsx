@@ -822,7 +822,7 @@ const Products = () => {
                             {/* Card Footer */}
                             <div className="pt-3 md:pt-4 border-t border-white/10">
                                 <a
-                                    href={`https://wa.me/584126305645?text=${encodeURIComponent(`Hola, quisiera solicitar una Demo Live de: ${p.title}`)}`}
+                                    href={`https://wa.me/${contentData.contact.whatsapp.replace(/\+/g, '')}?text=${encodeURIComponent(`Hola, quisiera solicitar una Demo Live de: ${p.title}`)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="w-full flex justify-between items-center group cursor-pointer hover:bg-white/10 p-2 rounded transition-colors"
