@@ -5,7 +5,7 @@
             "description": "Transformo problemas manuales en software autónomo. Ingeniería de valor para negocios que buscan escalar sin caos.",
             "ogTitle": "Alfredo Mendoza | Arquitecto Digital & Full Stack Visionary",
             "ogDescription": "Transformo problemas manuales en software autónomo. Ingeniería de valor para negocios que buscan escalar sin caos.",
-            "ogImage": "/images/cover-home-og.png",
+            "ogImage": "/images/cover-home-og.webp",
             "keywords": "Desarrollador Web, Full Stack, Astro, React, Automatización, Negocios Digitales, Software a medida"
         },
         "blog": {
@@ -13,7 +13,7 @@
             "description": "Una colección de planos y estrategias para el mundo digital. Artículos sobre automatización, desarrollo web y crecimiento empresarial.",
             "ogTitle": "El Blog | Estrategia, Código & Negocios",
             "ogDescription": "Una colección de planos y estrategias para el mundo digital. Artículos sobre automatización, desarrollo web y crecimiento empresarial.",
-            "ogImage": "/images/cover-blog-og.png",
+            "ogImage": "/images/cover-blog-og.webp",
             "keywords": "Blog Tecnología, Estrategia Digital, Tutoriales Astro, React, Automatización de Negocios"
         },
         "contact": {
@@ -21,7 +21,7 @@
             "description": "¿Listo para una transformación digital real? Si tu negocio factura pero no escala, hablemos. Estrategia y código de alto nivel.",
             "ogTitle": "Agenda tu Consultoría | Deja de ser aburrido",
             "ogDescription": "¿Listo para una transformación digital real? Si tu negocio factura pero no escala, hablemos. Estrategia y código de alto nivel.",
-            "ogImage": "/images/cover-contact-og.png",
+            "ogImage": "/images/cover-contact-og.webp",
             "keywords": "Consultoría Software, Desarrollo Web Venezuela, Contacto Alfredo Mendoza, Presupuesto Web"
         }
     },
