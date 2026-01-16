@@ -5,7 +5,7 @@
             "description": "Transformo problemas manuales en software autónomo. Ingeniería de valor para negocios que buscan escalar sin caos.",
             "ogTitle": "Alfredo Mendoza | Arquitecto Digital & Full Stack Visionary",
             "ogDescription": "Transformo problemas manuales en software autónomo. Ingeniería de valor para negocios que buscan escalar sin caos.",
-            "ogImage": "/images/portafolioweb.webp",
+            "ogImage": "/images/cover-home-og.png",
             "keywords": "Desarrollador Web, Full Stack, Astro, React, Automatización, Negocios Digitales, Software a medida"
         },
         "blog": {
@@ -13,7 +13,7 @@
             "description": "Una colección de planos y estrategias para el mundo digital. Artículos sobre automatización, desarrollo web y crecimiento empresarial.",
             "ogTitle": "El Blog | Estrategia, Código & Negocios",
             "ogDescription": "Una colección de planos y estrategias para el mundo digital. Artículos sobre automatización, desarrollo web y crecimiento empresarial.",
-            "ogImage": "/images/blogO.webp",
+            "ogImage": "/images/cover-blog-og.png",
             "keywords": "Blog Tecnología, Estrategia Digital, Tutoriales Astro, React, Automatización de Negocios"
         },
         "contact": {
@@ -21,7 +21,7 @@
             "description": "¿Listo para una transformación digital real? Si tu negocio factura pero no escala, hablemos. Estrategia y código de alto nivel.",
             "ogTitle": "Agenda tu Consultoría | Deja de ser aburrido",
             "ogDescription": "¿Listo para una transformación digital real? Si tu negocio factura pero no escala, hablemos. Estrategia y código de alto nivel.",
-            "ogImage": "/images/contactoAlfredo.webp",
+            "ogImage": "/images/cover-contact-og.png",
             "keywords": "Consultoría Software, Desarrollo Web Venezuela, Contacto Alfredo Mendoza, Presupuesto Web"
         }
     },
@@ -275,7 +275,7 @@
             "og": {
                 "title": "Nathikas: Sistema de Pedidos Automatizado",
                 "description": "Transformé el caos del WhatsApp en un sistema de ventas autónomo. Duplicamos conversiones eliminando fricción.",
-                "image": "/images/nathikas1.webp",
+                "image": "/images/cover-nathikas-og.png",
                 "type": "website"
             },
             "highlightQuote": "No construí una simple tienda online; diseñé un 'Vendedor Digital Autónomo'.",
@@ -348,7 +348,7 @@
             "og": {
                 "title": "GiooTattoo: Arte en Tinta & Código",
                 "description": "Portafolio inmersivo con IA generativa. Experiencia sensorial que filtra curiosos y profesionaliza cotizaciones.",
-                "image": "/images/gio/gio.webp",
+                "image": "/images/cover-gio-og.png",
                 "type": "website"
             },
             "highlightQuote": "No solo digitalicé un portafolio; estructuré y profesionalicé todo el proceso de cotización del artista, filtrando curiosos y cerrando citas.",
@@ -422,7 +422,7 @@
             "og": {
                 "title": "Cobra Con Roberth: Plataforma de Rifas Profesional",
                 "description": "E-commerce transaccional con Firebase, generación de PDFs, sistema de emails y validación oficial. Arquitectura escalable para miles de transacciones.",
-                "image": "/images/cobra/cobra.jpg",
+                "image": "/images/cover-cobra-og.png",
                 "type": "website"
             },
             "highlightQuote": "No solo construí una tienda online; diseñé un ecosistema completo de rifas con validación oficial, trazabilidad total y automatización de extremo a extremo.",
