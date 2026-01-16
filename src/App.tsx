@@ -10,7 +10,6 @@ import { ShoppingBag, MessageSquare, Ticket, ArrowUpRight, Database, Smartphone,
 import Navigation from './components/Navigation';
 import Chatbot from './components/Chatbot';
 import AdminPanel from './components/AdminPanel';
-import LoadingScreen from './components/LoadingScreen';
 import FloatingActions from './components/FloatingActions';
 import ContactModal from './components/ContactModal';
 import ContactFormPage from './components/ContactFormPage';
@@ -1498,7 +1497,6 @@ const Home = () => {
 };
 
 const App: React.FC = () => {
-    const [hasEntered, setHasEntered] = useState(false);
     const [isContactOpen, setIsContactOpen] = useState(false);
 
     // Preload critical images on mount
@@ -1528,11 +1526,8 @@ const App: React.FC = () => {
 
     return (
         <BrowserRouter>
-            <AnimatePresence mode="wait">
-                {!hasEntered && <LoadingScreen onComplete={() => setHasEntered(true)} />}
-            </AnimatePresence>
             <ScrollToTop />
-            <div className={`antialiased selection:bg-terracotta selection:text-white ${!hasEntered ? 'h-screen overflow-hidden' : ''}`}>
+            <div className="antialiased selection:bg-terracotta selection:text-white">
                 <Navigation />
                 {/* <Chatbot /> */}
                 <FloatingActions onOpenContact={() => setIsContactOpen(true)} />
