@@ -8,6 +8,7 @@ interface Props {
     ogTitle?: string;
     ogDescription?: string;
     ogImage?: string;
+    ogImageAlt?: string;
     ogType?: string;
     ogUrl?: string;
     keywords?: string;
@@ -24,12 +25,13 @@ const {
     ogUrl = Astro.url.href,
     keywords = "Desarrollador Web, Full Stack, Astro, React, Automatización, Negocios Digitales, Alfredo Mendoza",
     author = "Alfredo Mendoza",
+    ogImageAlt = title,
 } = Astro.props;
 
 // Ensure absolute URL for OG image
 const absoluteOgImage = ogImage.startsWith("http")
     ? ogImage
-    : `${Astro.url.origin}${ogImage}`;
+    : `https://alfredomendoza.netlify.app${ogImage}`;
 ---
 
 <!doctype html>
@@ -52,6 +54,7 @@ const absoluteOgImage = ogImage.startsWith("http")
         <meta property="og:type" content={ogType} />
         <meta property="og:url" content={ogUrl} />
         <meta property="og:image" content={absoluteOgImage} />
+        <meta property="og:image:alt" content={ogImageAlt} />
         <meta
             property="og:site_name"
             content="Alfredo Mendoza - Arquitecto Digital"
