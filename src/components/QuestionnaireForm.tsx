@@ -200,8 +200,11 @@ const QuestionnaireForm: React.FC = () => {
                             <label className="text-sm font-bold uppercase tracking-widest text-stone-400">
                                 {q.label}
                             </label>
+                            <p className="text-sm text-stone-300 leading-relaxed">
+                                {q.placeholder}
+                            </p>
                             <textarea
-                                placeholder={q.placeholder}
+                                placeholder="Escribe tu respuesta..."
                                 value={formData.respuestas[q.key]}
                                 onChange={e => updateRespuesta(q.key, e.target.value)}
                                 className="w-full h-24 bg-white/5 border border-white/10 rounded-lg p-4 text-white placeholder-stone-500 focus:border-terracotta focus:outline-none transition-colors resize-none text-sm leading-relaxed"
