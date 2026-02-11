@@ -1,3 +1,6 @@
+[functions]
+  directory = "netlify/functions"
+
 [dev]
   # Cambia este número al puerto que prefieras
   port = 3000

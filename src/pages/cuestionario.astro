@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import QuestionnaireForm from "../components/QuestionnaireForm";
+import "../styles/global.css";
+---
+
+<BaseLayout
+    title="Cuestionario de Proyecto | Alfredo Mendoza"
+    description="Responde este cuestionario para que pueda entender las necesidades de tu negocio y diseñar una solución a tu medida."
+    ogTitle="Cuestionario de Proyecto | Alfredo Mendoza"
+    ogDescription="Responde este cuestionario para que pueda entender las necesidades de tu negocio y diseñar una solución a tu medida."
+    ogImage="/images/cover-contact-og.webp"
+    ogUrl={`${Astro.url.origin}/cuestionario`}
+    keywords="Cuestionario Proyecto, Consultoría Software, Alfredo Mendoza"
+>
+    <QuestionnaireForm client:only="react" />
+</BaseLayout>
