@@ -16,7 +16,6 @@ interface HeladeriaData {
     gestionStock: string;
     alertasVencimiento: string;
     metodosEntregaActual: string;
-    zonasCoberturaDelivery: string;
     enviosNacionales: string;
     modeloSocios: string;
     sistemaActual: string;
@@ -89,35 +88,30 @@ const questionLabels: Record<keyof HeladeriaData["respuestas"], { section: strin
     label: "¿Qué modalidades de entrega ofreces o planeas ofrecer?",
     num: 9,
   },
-  zonasCoberturaDelivery: {
-    section: "Métodos de Entrega",
-    label: "¿Cuáles son las zonas geográficas cubiertas por cada sucursal para delivery?",
-    num: 10,
-  },
   enviosNacionales: {
     section: "Envíos Nacionales y Socios",
     label: "Para envíos nacionales: ¿utilizarás empresa de courier? ¿Quién asume el costo?",
-    num: 11,
+    num: 10,
   },
   modeloSocios: {
     section: "Envíos Nacionales y Socios",
     label: "¿Cómo funcionará el modelo de socios o franquicias? ¿Necesitarán panel propio?",
-    num: 12,
+    num: 11,
   },
   sistemaActual: {
     section: "Sistema Actual y Pagos",
     label: "¿Usas actualmente alguna plataforma de ventas online o punto de venta físico?",
-    num: 13,
+    num: 12,
   },
   metodosPagoAceptados: {
     section: "Sistema Actual y Pagos",
     label: "¿Qué métodos de pago aceptas o planeas aceptar?",
-    num: 14,
+    num: 13,
   },
   automatizacion: {
     section: "Sistema Actual y Pagos",
     label: "¿Qué procesos te gustaría automatizar? (notificaciones, reportes, sincronización de stock, etc.)",
-    num: 15,
+    num: 14,
   },
 };
 
@@ -300,7 +294,7 @@ function buildClientEmailHtml(data: HeladeriaData): string {
                   <p style="margin: 0 0 8px; color: #a8a29e; font-size: 13px;">📱 <strong style="color: #ffffff;">${data.telefono}</strong></p>
                   <p style="margin: 0 0 8px; color: #a8a29e; font-size: 13px;">🍦 <strong style="color: #ffffff;">${data.empresa || "Tu heladería"}</strong></p>
                   <p style="margin: 0 0 8px; color: #a8a29e; font-size: 13px;">💵 <strong style="color: #c2703e;">$${data.pago.montoAPagar?.toFixed(2)} USD (${data.pago.porcentaje}%)</strong> — ${data.pago.metodoPago === "zelle" ? "Zelle" : "Pago Móvil"}</p>
-                  <p style="margin: 0; color: #a8a29e; font-size: 13px;">📋 <strong style="color: #ffffff;">15 preguntas respondidas</strong></p>
+                  <p style="margin: 0; color: #a8a29e; font-size: 13px;">📋 <strong style="color: #ffffff;">14 preguntas respondidas</strong></p>
                 </td>
               </tr>
             </table>
@@ -372,7 +366,7 @@ const handler: Handler = async (event: HandlerEvent) => {
     await resend.emails.send({
       from: "Heladería Form <hola@alfredomendoza.dev>",
       to: [ADMIN_EMAIL],
-      subject: `🍦 Nuevo Cuestionario — ${data.nombre} (${data.empresa || "Sin empresa"}) · $${data.pago.montoAPagar?.toFixed(2)}`,
+      subject: `🍦 Nueva Heladería — ${data.nombre} (${data.empresa || "Sin empresa"}) · $${data.pago.montoAPagar?.toFixed(2)}`,
       html: buildAdminEmailHtml(data),
       replyTo: data.email,
     });

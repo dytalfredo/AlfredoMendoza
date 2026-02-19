@@ -22,7 +22,6 @@ interface HeladeriaFormData {
         gestionStock: string;
         alertasVencimiento: string;
         metodosEntregaActual: string;
-        zonasCoberturaDelivery: string;
         enviosNacionales: string;
         modeloSocios: string;
         sistemaActual: string;
@@ -155,11 +154,6 @@ const SECTIONS: SectionConfig[] = [
                     'Todas las opciones anteriores',
                 ],
             },
-            {
-                key: 'zonasCoberturaDelivery',
-                label: '10. Para el delivery: ¿cuáles son las zonas geográficas cubiertas por cada sucursal?',
-                description: 'Ej: "Sucursal Norte cubre Urb. A, B y C. Sucursal Sur cubre municipios X e Y". Define los radios de entrega por punto de venta.',
-            },
         ],
     },
     {
@@ -168,12 +162,12 @@ const SECTIONS: SectionConfig[] = [
         questions: [
             {
                 key: 'enviosNacionales',
-                label: '11. Para envíos nacionales: ¿utilizarás empresas de courier (MRW, Zoom, Tealca, etc.)? ¿Quién asume el costo?',
+                label: '10. Para envíos nacionales: ¿utilizarás empresas de courier (MRW, Zoom, Tealca, etc.)? ¿Quién asume el costo?',
                 description: 'Determina la lógica de tarifas de envío en el checkout. Indica si el flete lo paga el cliente o la empresa.',
             },
             {
                 key: 'modeloSocios',
-                label: '12. ¿Cómo funcionará el modelo de socios o franquicias? ¿Necesitarán acceso propio al sistema?',
+                label: '11. ¿Cómo funcionará el modelo de socios o franquicias? ¿Necesitarán acceso propio al sistema?',
                 description: 'Describe si son distribuidores, franquicia formal o puntos autorizados, y qué nivel de acceso necesitan (su panel, su stock, sus pedidos, etc.).',
             },
         ],
@@ -184,17 +178,17 @@ const SECTIONS: SectionConfig[] = [
         questions: [
             {
                 key: 'sistemaActual',
-                label: '13. ¿Usas actualmente alguna plataforma de ventas online o punto de venta físico?',
+                label: '12. ¿Usas actualmente alguna plataforma de ventas online o punto de venta físico?',
                 description: '¿Hay datos históricos de clientes o pedidos que deban migrarse al nuevo sistema? Cuéntanos tu flujo actual.',
             },
             {
                 key: 'metodosPagoAceptados',
-                label: '14. ¿Qué métodos de pago aceptas o planeas aceptar? (Efectivo, Pago Móvil, Zelle, Tarjeta, etc.)',
+                label: '13. ¿Qué métodos de pago aceptas o planeas aceptar? (Efectivo, Pago Móvil, Zelle, Tarjeta, etc.)',
                 description: 'Indica si necesitas conversión automática de divisas (Bs/USD) en el checkout y métodos por sucursal.',
             },
             {
                 key: 'automatizacion',
-                label: '15. ¿Qué procesos te gustaría automatizar? (notificaciones, reportes, sincronización de stock entre sucursales, etc.)',
+                label: '14. ¿Qué procesos te gustaría automatizar? (notificaciones, reportes, sincronización de stock entre sucursales, etc.)',
                 description: 'Descríbenos tareas repetitivas o manuales que quisieras que el sistema realice automáticamente. Ayuda a priorizar integraciones.',
             },
         ],
@@ -237,7 +231,6 @@ const HeladeriaForm: React.FC = () => {
             gestionStock: '',
             alertasVencimiento: '',
             metodosEntregaActual: '',
-            zonasCoberturaDelivery: '',
             enviosNacionales: '',
             modeloSocios: '',
             sistemaActual: '',
@@ -393,8 +386,8 @@ const HeladeriaForm: React.FC = () => {
                                         <label
                                             key={opt}
                                             className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${formData.respuestas[q.key] === opt
-                                                    ? 'border-terracotta bg-terracotta/10 text-white'
-                                                    : 'border-white/10 bg-white/5 text-stone-300 hover:border-white/30'
+                                                ? 'border-terracotta bg-terracotta/10 text-white'
+                                                : 'border-white/10 bg-white/5 text-stone-300 hover:border-white/30'
                                                 }`}
                                         >
                                             <input
@@ -455,8 +448,8 @@ const HeladeriaForm: React.FC = () => {
                 <label
                     key={key}
                     className={`flex items-start gap-4 p-5 rounded-xl border cursor-pointer transition-all ${formData.extras[key]
-                            ? 'border-terracotta bg-terracotta/10'
-                            : 'border-white/10 bg-white/5 hover:border-white/30'
+                        ? 'border-terracotta bg-terracotta/10'
+                        : 'border-white/10 bg-white/5 hover:border-white/30'
                         }`}
                 >
                     <input
@@ -521,8 +514,8 @@ const HeladeriaForm: React.FC = () => {
                     <label
                         key={pct}
                         className={`flex flex-col items-center gap-2 p-5 rounded-xl border cursor-pointer transition-all text-center ${formData.pago.porcentaje === pct
-                                ? 'border-terracotta bg-terracotta/10'
-                                : 'border-white/10 bg-white/5 hover:border-white/30'
+                            ? 'border-terracotta bg-terracotta/10'
+                            : 'border-white/10 bg-white/5 hover:border-white/30'
                             }`}
                     >
                         <input
@@ -571,8 +564,8 @@ const HeladeriaForm: React.FC = () => {
                         <label
                             key={m.value}
                             className={`flex items-center justify-center p-4 rounded-xl border cursor-pointer transition-all text-center font-bold ${formData.pago.metodoPago === m.value
-                                    ? 'border-terracotta bg-terracotta/10 text-white'
-                                    : 'border-white/10 bg-white/5 text-stone-300 hover:border-white/30'
+                                ? 'border-terracotta bg-terracotta/10 text-white'
+                                : 'border-white/10 bg-white/5 text-stone-300 hover:border-white/30'
                                 }`}
                         >
                             <input
