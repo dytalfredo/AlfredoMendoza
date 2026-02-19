@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import GeneratorUI from "../components/GeneratorUI";
+import "../styles/global.css";
+
+const apiKey = import.meta.env.GEMINI_API_KEY || "";
+---
+
+<BaseLayout
+    title="Generador de Formularios IA | Alfredo Mendoza"
+    description="Sistema inteligente para generar cuestionarios premium de proyectos."
+    ogTitle="Generador de Formularios IA | Alfredo Mendoza"
+    ogDescription="Diseña y previsualiza formularios dinámicos con inteligencia artificial."
+    ogImage="/images/cover-contact-og.webp"
+    ogUrl={`${Astro.url.origin}/generador-de-formularios`}
+    keywords="Generador IA, Formularios Dinámicos, Alfredo Mendoza"
+>
+    <GeneratorUI client:only="react" apiKey={apiKey} />
+</BaseLayout>
