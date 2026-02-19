@@ -1,4 +1,4 @@
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Ensure we look for the standard API_KEY env var first, falling back to the React-specific one if needed.
 const apiKey = import.meta.env.GEMINI_API_KEY || import.meta.env.PUBLIC_GEMINI_API_KEY || '';
@@ -25,20 +25,23 @@ export const sendMessageToGemini = async (history: { role: string, parts: { text
     return "Me encantaría charlar, pero mi cerebro (API Key) no está. Dile a Alfredo que arregle su archivo .env.";
   }
 
-  const ai = new GoogleGenAI({ apiKey });
+  const genAI = new GoogleGenerativeAI(apiKey);
 
   try {
-    const chat = ai.chats.create({
-      model: 'gemini-3-flash-preview',
-      config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
-        temperature: 0.9, // Higher temperature for more creative/sarcastic responses
-      },
-      history: history
+    const model = genAI.getGenerativeModel({
+      model: 'gemini-1.5-flash',
+      systemInstruction: SYSTEM_INSTRUCTION,
     });
 
-    const result = await chat.sendMessage({ message: newMessage });
-    return result.text;
+    const chat = model.startChat({
+      history: history,
+      generationConfig: {
+        temperature: 0.9,
+      }
+    });
+
+    const result = await chat.sendMessage(newMessage);
+    return result.response.text();
   } catch (error) {
     console.error("Gemini Error:", error);
     return "Mira, tengo un mal día de conexión. Incluso los genios fallan a veces.";
