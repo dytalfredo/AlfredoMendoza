@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, Loader2, Play } from 'lucide-react';
 import { AIFormService } from '../services/ai-form-service';
 import DynamicFormRenderer from './DynamicFormRenderer';
