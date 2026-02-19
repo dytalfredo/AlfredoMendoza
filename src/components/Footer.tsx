@@ -73,7 +73,8 @@ const Footer = () => {
             {/* Bottom Bar */}
             <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-stone-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs tracking-wider opacity-60">
                 <p>&copy; {currentYear} {contact.copyright}</p>
-                <div className="flex gap-6">
+                <div className="flex items-center gap-6">
+                    <span className="text-[10px] font-mono opacity-50">v{import.meta.env.APP_VERSION || '0.0.0'}</span>
                     <span>Privacy Policy</span>
                     <span>Terms of Service</span>
                 </div>

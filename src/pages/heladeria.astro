@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import HeladeriaForm from "../components/HeladeriaForm";
+import "../styles/global.css";
+---
+
+<BaseLayout
+    title="Sistema Digital para Heladería | Alfredo Mendoza"
+    description="Cuestionario de diseño para tu sistema de heladería online con gestión de tienda, sucursales y entregas."
+    ogTitle="Sistema Digital para Heladería | Alfredo Mendoza"
+    ogDescription="Diseña tu sistema de heladería digital con tienda online, gestión de sucursales, socios y delivery."
+    ogImage="/images/cover-contact-og.webp"
+    ogUrl={`${Astro.url.origin}/heladeria`}
+    keywords="Sistema Heladería, Tienda Online, Sucursales, Delivery, Alfredo Mendoza"
+>
+    <HeladeriaForm client:only="react" />
+</BaseLayout>
