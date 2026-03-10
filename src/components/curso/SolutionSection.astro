@@ -3,88 +3,165 @@
 ---
 
 <section
-    class="px-6 lg:px-20 py-20 bg-primary text-white overflow-hidden relative"
+    class="px-6 lg:px-20 py-32 bg-[#0b0e14] text-white overflow-hidden relative"
+    id="metodologia"
 >
+    <!-- Glow effects in the background -->
     <div
-        class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+        class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-primary/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none transform translate-x-1/3 -translate-y-1/3"
     >
-        <svg
-            class="w-full h-full"
-            preserveaspectratio="none"
-            viewbox="0 0 100 100"
-        >
-            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
-        </svg>
     </div>
     <div
-        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center"
+        class="absolute bottom-0 left-0 w-[40rem] h-[40rem] bg-terracotta/10 blur-[150px] rounded-full mix-blend-screen pointer-events-none transform -translate-x-1/3 translate-y-1/3"
     >
+    </div>
+
+    <div
+        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20 items-center relative z-10"
+    >
+        <!-- Text Content -->
         <div class="lg:w-1/2 animate-fade-in-left">
-            <h2 class="text-4xl lg:text-5xl font-black mb-8">
-                Nuestra Solución: <br />Certificación Real para el Mundo Real
+            <h2 class="text-4xl lg:text-5xl font-black mb-6 leading-tight">
+                Nuestra Solución: <br />
+                <span
+                    class="text-transparent bg-clip-text bg-linear-to-r from-primary to-terracotta"
+                    >Certificación Real para el Mundo Real</span
+                >
             </h2>
-            <p class="text-xl mb-10 text-white/90">
-                No es un curso grabado más. Es una inmersión donde trabajas con
-                empresas reales bajo un stack de herramientas pro.
+            <p class="text-lg lg:text-xl mb-12 text-slate-400 leading-relaxed">
+                No es un curso grabado más. Es una inmersión profunda donde
+                trabajas con empresas reales bajo un stack de herramientas pro,
+                preparándote para los retos de hoy.
             </p>
 
             <ul class="space-y-6">
-                <li class="flex gap-4 items-center">
+                <li class="flex gap-5 items-start">
                     <div
-                        class="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                        class="shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary shadow-lg"
                     >
-                        <span class="material-symbols-outlined">check</span>
+                        <span class="material-symbols-outlined text-2xl"
+                            >business_center</span
+                        >
                     </div>
-                    <span class="text-lg"
-                        >Casos de estudio de empresas reales.</span
-                    >
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-1">
+                            Casos de estudio reales
+                        </h3>
+                        <p class="text-slate-500 text-sm">
+                            Aprende resolviendo problemas reales de empresas que
+                            operan actualmente, no con teoría abstracta.
+                        </p>
+                    </div>
                 </li>
-                <li class="flex gap-4 items-center">
+                <li class="flex gap-5 items-start">
                     <div
-                        class="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                        class="shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary shadow-lg"
                     >
-                        <span class="material-symbols-outlined">check</span>
+                        <span class="material-symbols-outlined text-2xl"
+                            >construction</span
+                        >
                     </div>
-                    <span class="text-lg"
-                        >Acceso a herramientas Premium durante el curso.</span
-                    >
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-1">
+                            Herramientas Premium
+                        </h3>
+                        <p class="text-slate-500 text-sm">
+                            Domina el ecosistema digital real usando las mismas
+                            plataformas que utilizan las grandes agencias.
+                        </p>
+                    </div>
                 </li>
-                <li class="flex gap-4 items-center">
+                <li class="flex gap-5 items-start">
                     <div
-                        class="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                        class="shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-primary shadow-lg"
                     >
-                        <span class="material-symbols-outlined">check</span>
+                        <span class="material-symbols-outlined text-2xl"
+                            >hub</span
+                        >
                     </div>
-                    <span class="text-lg"
-                        >Networking con profesionales del sector.</span
-                    >
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-200 mb-1">
+                            Networking de alto valor
+                        </h3>
+                        <p class="text-slate-500 text-sm">
+                            Conecta con profesionales del sector y abre nuevas
+                            puertas operativas y comerciales.
+                        </p>
+                    </div>
                 </li>
             </ul>
         </div>
 
-        <div class="lg:w-1/2 grid grid-cols-2 gap-4 animate-fade-in-right">
+        <!-- Image Grid -->
+        <div
+            class="lg:w-1/2 w-full grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8 animate-fade-in-right"
+        >
+            <!-- Card 1: Empresas Reales -->
             <div
-                class="bg-white/10 p-4 rounded-xl backdrop-blur-sm"
-                data-alt="Team collaborating on marketing strategy"
+                class="group relative bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-5 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-primary/30"
             >
-                <img
-                    alt="Empresas Reales"
-                    class="rounded-lg shadow-lg mb-4 w-full h-32 object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC50wmyO1t2OOTj93mmMZ6A4pKOuasbyLcWdqF5kzs7mZJ6p4quD6iXXs_4JSUS9P1d_rAN0aUE30MGH5XNC6AK6KRz79LXWXPXKtgvnSmXRSHwibAmiuVwBXe1ikasAaUh2Z2A-8j3Z8vVopR1lN5lJRwrjwmCxvA2H1aiMb5Q-1xPsRflOtXEQVKiBrC9bjFHU8JcYvuv2xFonwxPfUceEDaHRk17Lh3bKIufXNwOAjaYl0CV_hOC2R5-vK8E1fZ4u7F72xu3EQ"
-                />
-                <p class="text-xs font-bold uppercase">Empresas Reales</p>
+                <div
+                    class="absolute inset-0 bg-linear-to-b from-primary/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                </div>
+                <div
+                    class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-5"
+                >
+                    <img
+                        alt="Empresas Reales"
+                        class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                        src="/empresas_reales.png"
+                    />
+                    <!-- Overlay gradient -->
+                    <div
+                        class="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent opacity-60"
+                    >
+                    </div>
+                </div>
+                <div class="relative z-10 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary"
+                        >domain</span
+                    >
+                    <h4
+                        class="text-sm font-black uppercase tracking-widest text-slate-300"
+                    >
+                        Empresas Reales
+                    </h4>
+                </div>
             </div>
 
+            <!-- Card 2: Herramientas Pro -->
             <div
-                class="bg-white/10 p-4 rounded-xl backdrop-blur-sm translate-y-8"
-                data-alt="Modern office tools and tech setup"
+                class="group relative bg-slate-900/50 backdrop-blur-xl border border-slate-800 rounded-3xl p-5 shadow-2xl transition-all duration-500 hover:-translate-y-2 hover:border-terracotta/30 sm:translate-y-12"
             >
-                <img
-                    alt="Herramientas Pro"
-                    class="rounded-lg shadow-lg mb-4 w-full h-32 object-cover"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoM41pM3UiooxzGFpPGduI_5BGV8M-zEeYW6tH68TPLQRPSYeSWGvhqQVBzLGXzTt8Vs8b5zmX4WSCRu-W2Z1-8XCUU6AWub1cTEXx5P0SZ6RwozOZHvy_j_5sCdhVK8Ma-kspf-s_5t_LWF3upyF3gCBMsSVLMZnzsuZw0bWgpXnHaTbiNyd7HwyhyaJia2iWjlFO_Cu8xFHn7NLNbKezyRWkIa9IehMaavB9-rFQTRF7ebJ_E5X5sgAyeMfUsv0jNjACoJp_fg"
-                />
-                <p class="text-xs font-bold uppercase">Herramientas Pro</p>
+                <div
+                    class="absolute inset-0 bg-linear-to-b from-terracotta/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                </div>
+                <div
+                    class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-5"
+                >
+                    <img
+                        alt="Herramientas Pro"
+                        class="w-full h-full object-cover transform transition-transform duration-700 group-hover:scale-110"
+                        src="/herramientas_pro.png"
+                    />
+                    <!-- Overlay gradient -->
+                    <div
+                        class="absolute inset-0 bg-linear-to-t from-slate-900 to-transparent opacity-60"
+                    >
+                    </div>
+                </div>
+                <div class="relative z-10 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-terracotta"
+                        >speed</span
+                    >
+                    <h4
+                        class="text-sm font-black uppercase tracking-widest text-slate-300"
+                    >
+                        Herramientas Pro
+                    </h4>
+                </div>
             </div>
         </div>
     </div>
