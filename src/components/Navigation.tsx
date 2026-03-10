@@ -172,6 +172,14 @@ const Navigation = () => {
                                     >
                                         {link.name}
                                     </a>
+                                ) : link.id === 'cursos' ? (
+                                    <a
+                                        key={link.name}
+                                        href="/curso_Certificacion_Profesional_en_Marketing_Digital_con_IA"
+                                        className="relative text-sm uppercase tracking-widest font-sans font-light bg-transparent border-none cursor-pointer text-white after:content-[''] after:absolute after:left-0 after:-bottom-1 after:w-0 after:h-[2px] after:bg-stone-500 after:transition-all after:duration-300 hover:after:w-full"
+                                    >
+                                        {link.name}
+                                    </a>
                                 ) : link.id === 'home' ? (
                                     <a
                                         key={link.name}
@@ -238,6 +246,15 @@ const Navigation = () => {
                                     key={link.name}
                                     href="/contacto"
                                     className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
+                                >
+                                    {link.name}
+                                </a>
+                            ) : link.id === 'cursos' ? (
+                                <a
+                                    key={link.name}
+                                    href="/curso_Certificacion_Profesional_en_Marketing_Digital_con_IA"
+                                    className="text-4xl font-serif italic hover:text-terracotta transition-colors bg-transparent border-none cursor-pointer"
+                                    onClick={() => setIsOpen(false)}
                                 >
                                     {link.name}
                                 </a>

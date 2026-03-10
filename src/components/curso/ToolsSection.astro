@@ -1,0 +1,87 @@
+---
+// src/components/curso/ToolsSection.astro
+const tools = [
+    { name: "ChatGPT", slug: "openai", icon: "forum" },
+    { name: "Gemini", slug: "googlegemini", icon: "auto_awesome" },
+    { name: "Canva", slug: "canva", icon: "palette" },
+    { name: "Affinity", slug: "affinitydesigner", icon: "brush" },
+    { name: "CapCut", slug: "capcut", icon: "movie_edit" },
+    { name: "Meta Ads", slug: "meta", icon: "ads_click" },
+    { name: "GA4", slug: "googleanalytics", icon: "analytics" },
+    { name: "Notion", slug: "notion", icon: "sticky_note_2" },
+    { name: "Trello", slug: "trello", icon: "dashboard_customize" },
+    { name: "Vercel", slug: "vercel", icon: "change_history" },
+    { name: "Netlify", slug: "netlify", icon: "cloud_upload" },
+    { name: "Stitch", slug: "stitcher", icon: "generating_tokens" },
+    { name: "Google Cloud", slug: "googlecloud", icon: "cloud" },
+];
+
+const displayTools = [...tools, ...tools, ...tools];
+---
+
+<section class="py-32 bg-[#0b0e14] overflow-hidden" id="herramientas">
+    <div class="max-w-7xl mx-auto px-6 lg:px-20 mb-20 text-center">
+        <h2
+            class="text-2xl md:text-3xl font-black mb-6 uppercase tracking-[0.3em] text-slate-400 animate-fade-in-up"
+        >
+            El stack tecnológico que dominarás
+        </h2>
+        <div class="w-32 h-1 bg-linear-to-r from-primary via-terracotta to-primary mx-auto rounded-full opacity-50"></div>
+    </div>
+
+    <!-- Animated Carousel Container -->
+    <div class="relative flex overflow-x-hidden group py-10">
+        <!-- Dramatic Edge Fades -->
+        <div class="absolute inset-y-0 left-0 w-32 md:w-80 bg-linear-to-r from-[#0b0e14] via-[#0b0e14]/80 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute inset-y-0 right-0 w-32 md:w-80 bg-linear-to-l from-[#0b0e14] via-[#0b0e14]/80 to-transparent z-10 pointer-events-none"></div>
+
+        <div class="animate-marquee flex whitespace-nowrap gap-16 md:gap-32 items-center">
+            {displayTools.map((tool) => (
+                <div class="flex flex-col items-center gap-8 min-w-[150px] md:min-w-[220px] flex-shrink-0 group/tool">
+                    <!-- Standardized container to handle different aspect ratios -->
+                    <div class="relative w-16 h-16 md:w-24 md:h-24 flex items-center justify-center grayscale opacity-80 group-hover/tool:grayscale-0 group-hover/tool:opacity-100 group-hover/tool:scale-110 transition-all duration-500 bg-white/5 rounded-3xl border border-white/5 group-hover/tool:border-primary/20 p-4 md:p-6 shadow-2xl">
+                        <!-- Logo with normalized visual weight -->
+                        <img 
+                            src={`https://cdn.simpleicons.org/${tool.slug}/ffffff`} 
+                            alt={tool.name}
+                            class="max-w-full max-h-full w-auto h-auto object-contain drop-shadow-lg"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                        />
+                        <!-- Fallback with consistent scale -->
+                        <div class="hidden absolute inset-0 items-center justify-center">
+                            <span class="material-symbols-outlined text-4xl md:text-5xl text-slate-500 group-hover/tool:text-primary transition-colors">
+                                {tool.icon}
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Name: Clearly visible with better contrast and weight -->
+                    <span class="text-[10px] md:text-xs font-black tracking-[0.25em] text-slate-400 group-hover/tool:text-white uppercase transition-all duration-300">
+                        {tool.name}
+                    </span>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-33.33%); }
+    }
+
+    .animate-marquee {
+        animation: marquee 70s linear infinite; /* Even smoother and more relaxed */
+        width: max-content;
+    }
+
+    @media (hover: hover) {
+        .group:hover .animate-marquee {
+            animation-play-state: paused;
+        }
+    }
+
+    .whitespace-nowrap {
+        white-space: nowrap;
+    }
+</style>

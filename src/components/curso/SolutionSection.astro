@@ -1,0 +1,91 @@
+---
+// src/components/curso/SolutionSection.astro
+---
+
+<section
+    class="px-6 lg:px-20 py-20 bg-primary text-white overflow-hidden relative"
+>
+    <div
+        class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none"
+    >
+        <svg
+            class="w-full h-full"
+            preserveaspectratio="none"
+            viewbox="0 0 100 100"
+        >
+            <path d="M0 100 C 20 0 50 0 100 100 Z" fill="white"></path>
+        </svg>
+    </div>
+    <div
+        class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center"
+    >
+        <div class="lg:w-1/2 animate-fade-in-left">
+            <h2 class="text-4xl lg:text-5xl font-black mb-8">
+                Nuestra Solución: <br />Certificación Real para el Mundo Real
+            </h2>
+            <p class="text-xl mb-10 text-white/90">
+                No es un curso grabado más. Es una inmersión donde trabajas con
+                empresas reales bajo un stack de herramientas pro.
+            </p>
+
+            <ul class="space-y-6">
+                <li class="flex gap-4 items-center">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                        <span class="material-symbols-outlined">check</span>
+                    </div>
+                    <span class="text-lg"
+                        >Casos de estudio de empresas reales.</span
+                    >
+                </li>
+                <li class="flex gap-4 items-center">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                        <span class="material-symbols-outlined">check</span>
+                    </div>
+                    <span class="text-lg"
+                        >Acceso a herramientas Premium durante el curso.</span
+                    >
+                </li>
+                <li class="flex gap-4 items-center">
+                    <div
+                        class="flex-shrink-0 w-8 h-8 rounded-full bg-white/20 flex items-center justify-center"
+                    >
+                        <span class="material-symbols-outlined">check</span>
+                    </div>
+                    <span class="text-lg"
+                        >Networking con profesionales del sector.</span
+                    >
+                </li>
+            </ul>
+        </div>
+
+        <div class="lg:w-1/2 grid grid-cols-2 gap-4 animate-fade-in-right">
+            <div
+                class="bg-white/10 p-4 rounded-xl backdrop-blur-sm"
+                data-alt="Team collaborating on marketing strategy"
+            >
+                <img
+                    alt="Empresas Reales"
+                    class="rounded-lg shadow-lg mb-4 w-full h-32 object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC50wmyO1t2OOTj93mmMZ6A4pKOuasbyLcWdqF5kzs7mZJ6p4quD6iXXs_4JSUS9P1d_rAN0aUE30MGH5XNC6AK6KRz79LXWXPXKtgvnSmXRSHwibAmiuVwBXe1ikasAaUh2Z2A-8j3Z8vVopR1lN5lJRwrjwmCxvA2H1aiMb5Q-1xPsRflOtXEQVKiBrC9bjFHU8JcYvuv2xFonwxPfUceEDaHRk17Lh3bKIufXNwOAjaYl0CV_hOC2R5-vK8E1fZ4u7F72xu3EQ"
+                />
+                <p class="text-xs font-bold uppercase">Empresas Reales</p>
+            </div>
+
+            <div
+                class="bg-white/10 p-4 rounded-xl backdrop-blur-sm translate-y-8"
+                data-alt="Modern office tools and tech setup"
+            >
+                <img
+                    alt="Herramientas Pro"
+                    class="rounded-lg shadow-lg mb-4 w-full h-32 object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoM41pM3UiooxzGFpPGduI_5BGV8M-zEeYW6tH68TPLQRPSYeSWGvhqQVBzLGXzTt8Vs8b5zmX4WSCRu-W2Z1-8XCUU6AWub1cTEXx5P0SZ6RwozOZHvy_j_5sCdhVK8Ma-kspf-s_5t_LWF3upyF3gCBMsSVLMZnzsuZw0bWgpXnHaTbiNyd7HwyhyaJia2iWjlFO_Cu8xFHn7NLNbKezyRWkIa9IehMaavB9-rFQTRF7ebJ_E5X5sgAyeMfUsv0jNjACoJp_fg"
+                />
+                <p class="text-xs font-bold uppercase">Herramientas Pro</p>
+            </div>
+        </div>
+    </div>
+</section>

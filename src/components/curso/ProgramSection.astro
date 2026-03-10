@@ -1,0 +1,503 @@
+---
+// src/components/curso/ProgramSection.astro
+const modules = [
+    {
+        number: "01",
+        title: "Ecosistema del Marketing Digital",
+        classes: [
+            {
+                name: "Clase 1: Introducción al marketing digital moderno",
+                objectives: [
+                    "Comprender qué es marketing digital",
+                    "Entender el ecosistema digital actual",
+                    "Conocer los principales canales",
+                ],
+                content: [
+                    "TRADICIONAL vs DIGITAL",
+                    "Canales: RRSS, Buscadores, Email, Ads",
+                    "Concepto de ecosistema digital",
+                    "Flujo: Contenido → tráfico → lead → venta",
+                ],
+                activity: "Analizar 3 empresas y sus canales.",
+            },
+            {
+                name: "Clase 2: Cómo funcionan los negocios digitales",
+                objectives: [
+                    "Comprender modelos digitales",
+                    "Generación de ingresos online",
+                ],
+                content: [
+                    "Tipos: Ecommerce, Servicios, SaaS, Educación",
+                    "Embudo de ventas",
+                    "Modelo AIDA: Atención, Interés, Deseo, Acción",
+                ],
+                activity: "Diseñar embudo simple.",
+            },
+            {
+                name: "Clase 3: Customer Journey",
+                objectives: ["Entender el recorrido del cliente"],
+                content: [
+                    "Etapas: Descubrimiento, Consideración, Decisión, Fidelización",
+                    "Ejemplos reales",
+                ],
+                activity: "Mapa de experiencia del cliente.",
+            },
+            {
+                name: "Clase 4: Uso estratégico de IA en marketing",
+                tools: ["ChatGPT", "Google Gemini"],
+                content: [
+                    "Generación de contenido",
+                    "Análisis de tendencias",
+                    "Generación de copy",
+                    "Automatización",
+                ],
+                activity: "Crear prompts estratégicos.",
+            },
+        ],
+    },
+    {
+        number: "02",
+        title: "Gestión Profesional de Redes Sociales",
+        classes: [
+            {
+                name: "Clase 5: Algoritmos de redes sociales",
+                content: [
+                    "IG, TikTok, FB, LinkedIn",
+                    "Engagement, Retención, Interacción",
+                ],
+                activity: "Analizar posts virales.",
+            },
+            {
+                name: "Clase 6: Estrategia de contenido",
+                content: [
+                    "Tipos: Educativo, Entretenimiento, Autoridad, Venta",
+                    "Pirámide de contenido",
+                ],
+                activity: "Plan semanal real.",
+            },
+            {
+                name: "Clase 7: Crecimiento orgánico",
+                content: ["Reels, Storytelling, Tendencias, Colaboraciones"],
+                activity: "Identificar tendencias actuales.",
+            },
+            {
+                name: "Clase 8: Automatización con IA",
+                tools: ["ChatGPT", "Google Gemini"],
+                activity: "Generar 10 ideas de contenido IA.",
+            },
+        ],
+    },
+    {
+        number: "03",
+        title: "Publicidad Digital",
+        classes: [
+            {
+                name: "Clase 9: Fundamentos",
+                content: ["CPC, CPM, CPA, ROAS", "Modelo de subasta"],
+            },
+            {
+                name: "Clase 10: Segmentación avanzada",
+                content: ["Demográfica, Intereses, Comportamiento"],
+                activity: "Crear perfil de audiencia.",
+            },
+            {
+                name: "Clase 11: Creativos que venden",
+                content: ["Hook, Problema, Solución, CTA"],
+                activity: "Diseñar anuncio.",
+            },
+            {
+                name: "Clase 12: Optimización",
+                tools: ["Google Ads"],
+                content: ["Métricas clave: CTR, CPA, ROAS"],
+            },
+        ],
+    },
+    {
+        number: "04",
+        title: "Diseño Visual",
+        classes: [
+            {
+                name: "Clase 13: Fundamentos",
+                content: ["Contraste, Jerarquía, Color, Tipografía"],
+            },
+            {
+                name: "Clase 14: Diseño con Canva",
+                tools: ["Canva"],
+                content: ["Creación de posts profesionales"],
+            },
+            {
+                name: "Clase 15: Diseño con Affinity",
+                tools: ["Affinity Designer"],
+                content: ["Vectores, Layouts, Exportación"],
+            },
+            {
+                name: "Clase 16: Diseño con IA",
+                content: ["Generar conceptos visuales con IA"],
+            },
+        ],
+    },
+    {
+        number: "05",
+        title: "Video Marketing",
+        classes: [
+            {
+                name: "Clase 17: Tendencias Video",
+                content: ["Reels, Shorts, TikTok"],
+            },
+            {
+                name: "Clase 18: Storytelling Video",
+                content: ["Hook, Historia, CTA"],
+            },
+            {
+                name: "Clase 19: Edición con CapCut",
+                tools: ["CapCut"],
+                content: ["Edición móvil avanzada"],
+            },
+            {
+                name: "Clase 20: Video Ads",
+                content: ["Optimización para publicidad"],
+            },
+        ],
+    },
+    {
+        number: "06",
+        title: "Investigación de Mercado",
+        classes: [
+            {
+                name: "Clase 21: Análisis Competencia",
+                content: ["Benchmarking"],
+            },
+            {
+                name: "Clase 22: Tendencias",
+                tools: ["Google Trends"],
+                content: ["Detección temprana"],
+            },
+            {
+                name: "Clase 23: Contenido Viral",
+                content: ["Análisis de por qué se vuelve viral"],
+            },
+            {
+                name: "Clase 24: Datos",
+                content: ["Estrategia basada en datos"],
+            },
+        ],
+    },
+    {
+        number: "07",
+        title: "Planificación de Contenido",
+        classes: [
+            { name: "Clase 25: Calendarios editoriales" },
+            { name: "Clase 26: Gestión Tools", tools: ["Notion", "Trello"] },
+            {
+                name: "Clase 27: Producción",
+                content: ["Sistemas Batch Content"],
+            },
+            { name: "Clase 28: Automatización" },
+        ],
+    },
+    {
+        number: "08",
+        title: "Copywriting con IA",
+        classes: [
+            { name: "Clase 29: Fundamentos Copywriting" },
+            { name: "Clase 30: Frameworks Ventas", content: ["AIDA, PAS"] },
+            { name: "Clase 31: Storytelling ventas" },
+            { name: "Clase 32: Copy IA", tools: ["ChatGPT", "Gemini"] },
+        ],
+    },
+    {
+        number: "09",
+        title: "Analítica",
+        classes: [
+            { name: "Clase 33: Intro Analítica" },
+            { name: "Clase 34: Métricas Clave" },
+            { name: "Clase 35: Google Analytics", tools: ["GA4"] },
+            { name: "Clase 36: Reportes" },
+        ],
+    },
+    {
+        number: "10",
+        title: "Landing Pages",
+        classes: [
+            { name: "Clase 37: Conversión" },
+            {
+                name: "Clase 38: Estructura Ideal",
+                content: ["Hero, Prob, Sol, Benef, Social, Oferta, CTA"],
+            },
+            { name: "Clase 39: Copy Landing IA", tools: ["Gemini Studio"] },
+            { name: "Clase 40: Stitch", tools: ["Stitch AI"] },
+        ],
+    },
+];
+---
+
+<section
+    class="px-6 lg:px-20 py-24 bg-[#0b0e14] relative overflow-hidden"
+    id="programa"
+>
+    <!-- Glow effects -->
+    <div
+        class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10"
+    >
+    </div>
+    <div
+        class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-terracotta/5 rounded-full blur-[120px] -z-10"
+    >
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-20 animate-fade-in-up">
+            <span
+                class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase mb-6"
+                >Currículo del curso</span
+            >
+            <h2
+                class="text-4xl lg:text-6xl font-black text-white mb-6 leading-tight"
+            >
+                Domina el <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-terracotta"
+                    >Marketing Digital</span
+                >
+            </h2>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+                40 clases intensivas diseñadas para convertirte en un experto
+                capaz de facturar con IA.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {
+                modules.map((mod, index) => (
+                    <div
+                        class="group border border-white/5 bg-[#161b22] rounded-2xl overflow-hidden hover:border-primary/30 transition-all duration-500 animate-fade-in-up"
+                        style={`animation-delay: ${index * 100}ms;`}
+                    >
+                        <button
+                            class="w-full h-full p-6 lg:p-8 flex items-center justify-between text-left focus:outline-none module-open-btn"
+                            data-module-index={index}
+                        >
+                            <div class="flex items-center gap-6">
+                                <span class="text-3xl font-black text-slate-800 group-hover:text-primary/20 transition-colors duration-500 tracking-tighter">
+                                    {mod.number}
+                                </span>
+                                <div>
+                                    <h3 class="text-lg font-bold text-white group-hover:text-primary transition-colors leading-tight break-words">
+                                        {mod.title}
+                                    </h3>
+                                    <p class="text-slate-500 text-xs mt-1">
+                                        {mod.classes.length} Clases intensivas
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300 flex-shrink-0">
+                                <span class="material-symbols-outlined text-slate-400 group-hover:text-primary text-xl">
+                                    visibility
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Modal Container -->
+<div
+    id="module-modal"
+    class="fixed inset-0 z-[100] flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300"
+>
+    <!-- Modal Backdrop -->
+    <div
+        class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-close-overlay"
+    >
+    </div>
+
+    <!-- Modal Content -->
+    <div
+        class="relative w-full max-w-3xl max-h-[90vh] bg-[#161b22] border border-white/10 rounded-3xl overflow-hidden shadow-2xl transform scale-95 transition-all duration-300 modal-body"
+    >
+        <!-- Modal Header -->
+        <div
+            class="p-6 lg:p-8 border-b border-white/5 flex items-center justify-between sticky top-0 bg-[#161b22] z-10"
+        >
+            <div class="flex items-center gap-4">
+                <span
+                    id="modal-number"
+                    class="text-3xl font-black text-primary/30 tracking-tighter"
+                ></span>
+                <h3
+                    id="modal-title"
+                    class="text-xl lg:text-2xl font-black text-white"
+                >
+                </h3>
+            </div>
+            <button
+                class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white transition-all modal-close-btn"
+            >
+                <span class="material-symbols-outlined font-bold">close</span>
+            </button>
+        </div>
+
+        <!-- Modal Scrollable Body -->
+        <div
+            class="p-6 lg:p-8 overflow-y-auto max-h-[calc(90vh-100px)] custom-scrollbar"
+        >
+            <div
+                id="modal-classes-container"
+                class="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+                <!-- Classes will be injected here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script define:vars={{ modules }}>
+    const modal = document.getElementById("module-modal");
+    const modalBody = modal.querySelector(".modal-body");
+    const modalTitle = document.getElementById("modal-title");
+    const modalNumber = document.getElementById("modal-number");
+    const classesContainer = document.getElementById("modal-classes-container");
+    const openBtns = document.querySelectorAll(".module-open-btn");
+    const closeBtns = document.querySelectorAll(
+        ".modal-close-btn, .modal-close-overlay",
+    );
+
+    function openModal(index) {
+        const mod = modules[index];
+        if (!mod) return;
+
+        modalNumber.textContent = mod.number;
+        modalTitle.textContent = mod.title;
+
+        // Clear previous classes
+        classesContainer.innerHTML = "";
+
+        // Inject new classes
+        mod.classes.forEach((clase, cIndex) => {
+            const classEl = document.createElement("div");
+            classEl.className =
+                "space-y-4 p-5 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-primary/20 transition-all";
+
+            let objectivesHtml = "";
+            if (clase.objectives) {
+                objectivesHtml = `
+                    <div class="space-y-2">
+                        <p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Objetivos</p>
+                        <ul class="space-y-1">
+                            ${clase.objectives
+                                .map(
+                                    (obj) => `
+                                <li class="flex items-start gap-2 text-xs text-slate-400">
+                                    <span class="text-primary mt-1 text-[10px]">•</span> ${obj}
+                                </li>
+                            `,
+                                )
+                                .join("")}
+                        </ul>
+                    </div>
+                `;
+            }
+
+            let contentHtml = "";
+            if (clase.content) {
+                contentHtml = `
+                    <div class="space-y-2">
+                        <p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Contenido</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${clase.content
+                                .map(
+                                    (item) => `
+                                <span class="px-2 py-1 rounded-md bg-white/5 text-[10px] text-slate-300 border border-white/5">
+                                    ${item}
+                                </span>
+                            `,
+                                )
+                                .join("")}
+                        </div>
+                    </div>
+                `;
+            }
+
+            let toolsHtml = "";
+            if (clase.tools) {
+                toolsHtml = `
+                    <div class="flex items-center gap-2">
+                        <p class="text-[10px] uppercase tracking-wider text-slate-500 font-bold">Herramientas:</p>
+                        <div class="flex gap-2">
+                            ${clase.tools.map((tool) => `<span class="text-[10px] text-primary font-bold">${tool}</span>`).join(", ")}
+                        </div>
+                    </div>
+                `;
+            }
+
+            let activityHtml = "";
+            if (clase.activity) {
+                activityHtml = `
+                    <div class="p-3 bg-terracotta/5 rounded-xl border border-terracotta/10">
+                        <p class="text-[10px] uppercase tracking-wider text-terracotta font-bold mb-1">Actividad Práctica</p>
+                        <p class="text-xs text-slate-300 italic">${clase.activity}</p>
+                    </div>
+                `;
+            }
+
+            classEl.innerHTML = `
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-xs font-bold">
+                        ${cIndex + 1}
+                    </div>
+                    <h4 class="font-bold text-white text-md">${clase.name}</h4>
+                </div>
+                ${objectivesHtml}
+                ${contentHtml}
+                ${toolsHtml}
+                ${activityHtml}
+            `;
+            classesContainer.appendChild(classEl);
+        });
+
+        // Show modal
+        modal.classList.remove("opacity-0", "pointer-events-none");
+        modalBody.classList.remove("scale-95");
+        modalBody.classList.add("scale-100");
+        document.body.style.overflow = "hidden"; // Prevent scroll
+    }
+
+    function closeModal() {
+        modal.classList.add("opacity-0", "pointer-events-none");
+        modalBody.classList.remove("scale-100");
+        modalBody.classList.add("scale-95");
+        document.body.style.overflow = ""; // Restore scroll
+    }
+
+    openBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const index = btn.getAttribute("data-module-index");
+            openModal(parseInt(index));
+        });
+    });
+
+    closeBtns.forEach((btn) => btn.addEventListener("click", closeModal));
+
+    // ESC key closes modal
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+    });
+</script>
+
+<style>
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.02);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+</style>

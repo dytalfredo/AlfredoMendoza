@@ -1,0 +1,37 @@
+---
+// src/components/curso/CourseFooter.astro
+---
+
+<footer class="px-6 lg:px-20 py-12 bg-[#0b0e14] border-t border-white/5">
+    <div
+        class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8"
+    >
+        <div class="flex items-center gap-2 text-primary opacity-50">
+            <span class="material-symbols-outlined text-2xl">auto_awesome</span>
+            <h2
+                class="text-white text-md font-bold leading-tight tracking-tight"
+            >
+                Certificación Marketing IA
+            </h2>
+        </div>
+        <p class="text-slate-500 text-sm">
+            © {new Date().getFullYear()} Certificación Profesional en Marketing Digital
+            con IA. Todos los derechos reservados.
+        </p>
+        <div class="flex gap-6">
+            <a
+                class="text-slate-400 hover:text-primary transition-colors"
+                href="#"><span class="material-symbols-outlined">share</span></a
+            >
+            <a
+                class="text-slate-400 hover:text-primary transition-colors"
+                href="#"
+                ><span class="material-symbols-outlined">public</span></a
+            >
+            <a
+                class="text-slate-400 hover:text-primary transition-colors"
+                href="#"><span class="material-symbols-outlined">mail</span></a
+            >
+        </div>
+    </div>
+</footer>
